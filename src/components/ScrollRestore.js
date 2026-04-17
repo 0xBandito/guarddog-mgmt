@@ -39,12 +39,17 @@ export default function ScrollRestore() {
 
   // Continuously record scroll position for the current path so we have
   // something to restore when the user navigates back to it.
+  //
+  // Important: we do NOT save in the cleanup. When HomePage unmounts (e.g.
+  // clicking a service card), its 1300vh scroll-container is removed and
+  // window.scrollY gets CLAMPED to the new, much shorter page's max. If we
+  // saved there, we'd overwrite the legitimate last-scroll-position with
+  // that clamped value. The scroll listener already captured the real
+  // position on every scroll event — that's what we want to restore to.
   useEffect(() => {
     const onScroll = () => savePosition(pathname, window.scrollY);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
-      // Capture final position when leaving the path
-      savePosition(pathname, window.scrollY);
       window.removeEventListener("scroll", onScroll);
     };
   }, [pathname]);
