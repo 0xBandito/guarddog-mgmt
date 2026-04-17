@@ -31,8 +31,33 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: "1rem" }}>
+        <div style={{
+          borderTop: `1px solid ${C.border}`,
+          paddingTop: "1rem",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: "0.75rem",
+        }}>
           <p style={{ fontFamily: "'Manrope', sans-serif", fontSize: "0.62rem", color: "rgba(232,228,220,0.1)", margin: 0, fontWeight: 400 }}>{COPY.footer.copy}</p>
+          <Link
+            to="/privacy"
+            style={{
+              fontFamily: "'Manrope', sans-serif",
+              fontSize: "0.6rem",
+              color: C.creamMuted,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              textDecoration: "none",
+              transition: "color 0.3s",
+              fontWeight: 500,
+            }}
+            onMouseEnter={(e) => (e.target.style.color = C.cream)}
+            onMouseLeave={(e) => (e.target.style.color = C.creamMuted)}
+          >
+            Privacy
+          </Link>
         </div>
       </div>
     </footer>
