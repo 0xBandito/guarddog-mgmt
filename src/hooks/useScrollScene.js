@@ -198,12 +198,11 @@ export default function useScrollScene({
       gsap.ticker.lagSmoothing(0);
       window.__lenis = lenis;
 
-      // Guarantee the scroll-driven page starts at the top. Some browsers
-      // (esp. after React strict-mode double-mount or a refresh at mid-scroll)
-      // will restore a saved position the instant the 1300vh scroll-container
-      // renders. Force Lenis + the window back to zero immediately.
-      lenis.scrollTo(0, { immediate: true });
-      window.scrollTo(0, 0);
+      // Note: we intentionally do NOT force scrollTo(0) here. The inline
+      // script in public/index.html handles refresh-to-top, and the
+      // ScrollRestore component (in Layout) handles per-route scroll logic
+      // — including restoring the user's previous position when they hit
+      // the browser back button. Forcing zero here would override that.
 
       // Scroll container trigger: frame playback + bg sampling
       const scrollEl = scrollContainerRef.current;

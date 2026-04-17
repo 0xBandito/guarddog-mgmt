@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Nav from "./Nav";
 import Footer from "./Footer";
-import ScrollToTop from "./ScrollToTop";
+import ScrollRestore from "./ScrollRestore";
 import { GRAIN } from "../constants/colors";
 
 export default function Layout() {
@@ -20,7 +20,7 @@ export default function Layout() {
 
   return (
     <>
-      <ScrollToTop />
+      <ScrollRestore />
       <div style={{ position: "fixed", inset: 0, backgroundImage: GRAIN, backgroundRepeat: "repeat", backgroundSize: "256px 256px", pointerEvents: "none", zIndex: 50, opacity: 0.5, mixBlendMode: "overlay" }} />
       <Nav />
       <Outlet />
