@@ -29,8 +29,6 @@ function savePosition(pathname, y) {
  *   scroll position for that pathname
  * - The very first mount always starts at the top (matches refresh behavior)
  * - Scroll position is saved continuously per pathname while scrolling
- *
- * Replaces the old ScrollToTop component which always jumped to 0.
  */
 export default function ScrollRestore() {
   const { pathname } = useLocation();

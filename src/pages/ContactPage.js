@@ -1,9 +1,17 @@
 import { C } from "../constants/colors";
 import { COPY } from "../constants/copy";
 import useInView from "../hooks/useInView";
+import usePageMeta from "../hooks/usePageMeta";
 import ContactForm from "../components/ContactForm";
 
 export default function ContactPage() {
+  usePageMeta({
+    title: "Contact — Let's Build with Guard Dog Management",
+    description:
+      "Whether you just signed your first NIL deal or you're looking for long-term wealth strategy, we're here. No pressure, no pitch — just a conversation about protecting what is yours.",
+    path: "/contact",
+  });
+
   const [ref, inView] = useInView();
   return (
     <section ref={ref} style={{ background: C.bgAlt, padding: "10rem 3rem 10rem", position: "relative" }}>

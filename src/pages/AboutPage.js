@@ -1,9 +1,17 @@
 import { C } from "../constants/colors";
 import { COPY } from "../constants/copy";
 import useInView from "../hooks/useInView";
+import usePageMeta from "../hooks/usePageMeta";
 import CTABanner from "../components/CTABanner";
 
 export default function AboutPage() {
+  usePageMeta({
+    title: "About — Guard Dog Management",
+    description:
+      "Meet the team behind Guard Dog Management: athlete development, wealth strategy, tax & compliance, and lifestyle management — people who understand the NIL era from every angle.",
+    path: "/about",
+  });
+
   const [ref, inView] = useInView();
   return (
     <>

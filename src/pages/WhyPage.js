@@ -1,9 +1,17 @@
 import { C } from "../constants/colors";
 import { COPY } from "../constants/copy";
 import useInView from "../hooks/useInView";
+import usePageMeta from "../hooks/usePageMeta";
 import CTABanner from "../components/CTABanner";
 
 export default function WhyPage() {
+  usePageMeta({
+    title: "Why Guard Dog — Built for Athletes, Not Banks",
+    description:
+      "College athletes are signing six-figure NIL deals with no financial infrastructure around them. Guard Dog was built to fill that gap before the habits that last a lifetime get set.",
+    path: "/why-guard-dogs",
+  });
+
   const [ref, inView] = useInView();
   return (
     <>

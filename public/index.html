@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0C0B09" />
 
-    <!-- Favicon: modern browsers use the SVG; .ico kept as legacy fallback -->
+    <!-- Favicon: modern browsers prefer the SVG; legacy fallback is .ico;
+         iOS home-screen icons use the 180x180 PNG -->
     <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
     <link rel="alternate icon" type="image/x-icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
     <link rel="mask-icon" href="%PUBLIC_URL%/favicon.svg" color="#4ADE80" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
@@ -24,14 +25,16 @@
     <meta property="og:site_name" content="Guard Dog Management" />
     <meta property="og:title" content="Guard Dog Management — Protect the Bag" />
     <meta property="og:description" content="NIL management for collegiate athletes. We help athletes earn, manage, and maximize their NIL opportunities while developing professionals on and off the field." />
-    <meta property="og:image" content="%PUBLIC_URL%/images/guarddogmgmt-logo.svg" />
+    <meta property="og:image" content="%PUBLIC_URL%/images/og-image.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
     <meta property="og:image:alt" content="Guard Dog Management logo" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Guard Dog Management — Protect the Bag" />
     <meta name="twitter:description" content="NIL management for collegiate athletes. Earn, manage, and protect what you build." />
-    <meta name="twitter:image" content="%PUBLIC_URL%/images/guarddogmgmt-logo.svg" />
+    <meta name="twitter:image" content="%PUBLIC_URL%/images/og-image.png" />
 
     <!-- Disable automatic scroll restoration BEFORE anything else loads,
          so the browser never tries to restore a mid-scroll position on refresh.

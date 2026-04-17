@@ -2,9 +2,17 @@ import { Link } from "react-router-dom";
 import { C } from "../constants/colors";
 import { COPY } from "../constants/copy";
 import useInView from "../hooks/useInView";
+import usePageMeta from "../hooks/usePageMeta";
 import CTABanner from "../components/CTABanner";
 
 export default function ServicesIndexPage() {
+  usePageMeta({
+    title: "Services — Guard Dog Management",
+    description:
+      "Full-coverage NIL management for collegiate athletes: athlete development, wealth strategy, tax & compliance, and lifestyle. Four pillars, one goal — protect the bag.",
+    path: "/services",
+  });
+
   const [headerRef, headerInView] = useInView();
   const [listRef, listInView] = useInView();
 

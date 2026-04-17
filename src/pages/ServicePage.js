@@ -2,11 +2,21 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { C } from "../constants/colors";
 import { COPY } from "../constants/copy";
 import useInView from "../hooks/useInView";
+import usePageMeta from "../hooks/usePageMeta";
 import CTABanner from "../components/CTABanner";
 
 export default function ServicePage() {
   const { slug } = useParams();
   const service = COPY.services.items.find((s) => s.slug === slug);
+
+  // Safe default for meta when slug is invalid (Navigate still fires below)
+  usePageMeta({
+    title: service
+      ? `${service.title} — Guard Dog Management`
+      : "Service — Guard Dog Management",
+    description: service ? service.body : undefined,
+    path: service ? `/services/${service.slug}` : undefined,
+  });
 
   if (!service) return <Navigate to="/" replace />;
 

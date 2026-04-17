@@ -10,10 +10,20 @@
       "purpose": "any"
     },
     {
-      "src": "images/guarddogmgmt-logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "maskable"
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "images/guarddogmgmt-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/og-image.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "start_url": "/",

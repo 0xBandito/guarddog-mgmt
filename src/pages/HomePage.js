@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { C } from "../constants/colors";
 import { COPY } from "../constants/copy";
 import useScrollScene from "../hooks/useScrollScene";
+import usePageMeta from "../hooks/usePageMeta";
 
 /* ===== Loader ===== */
 function Loader({ progress, done }) {
@@ -753,6 +754,13 @@ export default function HomePage() {
   const scrollContainerRef = useRef(null);
   const darkOverlayRef = useRef(null);
   const marqueeRef = useRef(null);
+
+  usePageMeta({
+    title: "Guard Dog Management — NIL Management for Collegiate Athletes",
+    description:
+      "Guard Dog Management helps collegiate athletes earn, manage, and maximize their NIL opportunities — with athlete development, wealth strategy, tax & compliance, and lifestyle services that keep the bag protected on and off the field.",
+    path: "/",
+  });
 
   const { loadProgress, loaded } = useScrollScene({
     canvasRef,
