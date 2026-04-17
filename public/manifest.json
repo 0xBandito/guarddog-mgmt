@@ -1,0 +1,23 @@
+{
+  "short_name": "Guard Dog",
+  "name": "Guard Dog Management — NIL Management for Collegiate Athletes",
+  "description": "Guard Dog helps collegiate athletes earn, manage, and maximize their NIL opportunities while developing professionals on and off the field.",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "images/guarddogmgmt-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0C0B09",
+  "background_color": "#0C0B09"
+}

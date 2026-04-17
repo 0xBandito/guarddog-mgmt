@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0C0B09" />
+
+    <!-- Favicon: modern browsers use the SVG; .ico kept as legacy fallback -->
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
+    <link rel="alternate icon" type="image/x-icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.svg" />
+    <link rel="mask-icon" href="%PUBLIC_URL%/favicon.svg" color="#4ADE80" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Primary SEO -->
+    <title>Guard Dog Management — NIL Management for Collegiate Athletes</title>
+    <meta name="description" content="Guard Dog Management helps collegiate athletes earn, manage, and maximize their NIL opportunities — with athlete development, wealth strategy, tax &amp; compliance, and lifestyle services that keep the bag protected on and off the field." />
+    <meta name="author" content="Guard Dog Management Inc." />
+    <meta name="keywords" content="NIL, Name Image Likeness, college athletes, sports management, wealth strategy, tax compliance, athlete development, NIL deals, collegiate athletes" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph (Facebook, LinkedIn, iMessage, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Guard Dog Management" />
+    <meta property="og:title" content="Guard Dog Management — Protect the Bag" />
+    <meta property="og:description" content="NIL management for collegiate athletes. We help athletes earn, manage, and maximize their NIL opportunities while developing professionals on and off the field." />
+    <meta property="og:image" content="%PUBLIC_URL%/images/guarddogmgmt-logo.svg" />
+    <meta property="og:image:alt" content="Guard Dog Management logo" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Guard Dog Management — Protect the Bag" />
+    <meta name="twitter:description" content="NIL management for collegiate athletes. Earn, manage, and protect what you build." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/images/guarddogmgmt-logo.svg" />
+
+    <!-- Disable automatic scroll restoration BEFORE anything else loads,
+         so the browser never tries to restore a mid-scroll position on refresh.
+         Must live in <head> inline to beat browser's restore timing. -->
+    <script>
+      (function () {
+        try {
+          if ('scrollRestoration' in window.history) {
+            window.history.scrollRestoration = 'manual';
+          }
+          // Jump to the very top as the page parses. Any later scroll attempts
+          // by the browser (from a saved session) will be overridden again below.
+          window.scrollTo(0, 0);
+          // Belt-and-suspenders: also reset on the load event and pageshow
+          // (pageshow fires on both fresh loads and bfcache restores).
+          window.addEventListener('load', function () { window.scrollTo(0, 0); });
+          window.addEventListener('pageshow', function () { window.scrollTo(0, 0); });
+          // Clear any saved scroll before the user leaves, so a back/forward
+          // navigation into this page starts fresh too.
+          window.addEventListener('beforeunload', function () { window.scrollTo(0, 0); });
+        } catch (e) { /* no-op */ }
+      })();
+    </script>
+    <style>
+      html, body { margin: 0; padding: 0; background: #0C0B09; }
+      #initial-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 100000;
+        background: #0C0B09;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      #initial-loader.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      #initial-loader .il-brand {
+        font-family: 'Archivo Black', 'Impact', sans-serif;
+        font-size: 1.4rem;
+        color: #E8E4DC;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      #initial-loader .il-bar {
+        position: relative;
+        width: 180px;
+        height: 2px;
+        background: rgba(232,228,220,0.08);
+        overflow: hidden;
+      }
+      #initial-loader .il-bar::after {
+        content: "";
+        position: absolute;
+        left: -40%;
+        top: 0;
+        height: 100%;
+        width: 40%;
+        background: #4ADE80;
+        animation: il-slide 1.1s ease-in-out infinite;
+      }
+      @keyframes il-slide {
+        0%   { left: -40%; }
+        100% { left: 100%; }
+      }
+      #initial-loader .il-label {
+        font-size: 0.65rem;
+        color: rgba(232,228,220,0.5);
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <!-- Pre-React loader: visible instantly while the JS bundle downloads and React mounts. -->
+    <div id="initial-loader" aria-label="Loading">
+      <div class="il-brand">Guard Dog</div>
+      <div class="il-bar" role="progressbar" aria-busy="true"></div>
+      <div class="il-label">Loading</div>
+    </div>
+
+    <div id="root"></div>
+  </body>
+</html>
