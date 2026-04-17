@@ -1,3 +1,11 @@
-# https://www.robotstxt.org/robotstxt.html
+# Guard Dog Management — robots.txt
+# Update the Sitemap line below if the final custom domain differs.
+
 User-agent: *
+Allow: /
+
+# Block nothing — all routes are public and intended to be indexed
 Disallow:
+
+# Sitemap location (absolute URL required by the spec)
+Sitemap: https://guarddogmgmt.com/sitemap.xml
