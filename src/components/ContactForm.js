@@ -46,7 +46,7 @@ const INITIAL = {
 // Email: requires local@domain.tld pattern with a sensible TLD and no stray
 // whitespace. Tight enough to block common typos, permissive enough for real
 // addresses (plus-addressing, subdomains, etc.).
-const EMAIL_RE = /^[A-Za-z0-9._%+\-]+@[A-Za-z0-9](?:[A-Za-z0-9\-]*[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9\-]*[A-Za-z0-9])?)*\.[A-Za-z]{2,}$/;
+const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)*\.[A-Za-z]{2,}$/;
 
 // Auto-format a phone number input as the user types.
 // - Allows "+" only as the first character (for international prefixes)
