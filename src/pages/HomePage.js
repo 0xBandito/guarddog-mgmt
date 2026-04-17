@@ -132,24 +132,6 @@ function HeroStandalone({ heroRef }) {
             onMouseEnter={(e) => { e.target.style.opacity = "0.85"; e.target.style.transform = "translateY(-2px)"; }}
             onMouseLeave={(e) => { e.target.style.opacity = "1"; e.target.style.transform = "translateY(0)"; }}
           >{COPY.hero.cta}</button>
-          <button
-            onClick={() => navigate("/contact")}
-            style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontSize: "0.72rem",
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              background: "transparent",
-              color: C.creamDim,
-              border: `1px solid ${C.creamMuted}`,
-              padding: "1.1rem 2.5rem",
-              cursor: "pointer",
-              fontWeight: 500,
-              transition: "border-color 0.3s, color 0.3s",
-            }}
-            onMouseEnter={(e) => { e.target.style.borderColor = C.green; e.target.style.color = C.green; }}
-            onMouseLeave={(e) => { e.target.style.borderColor = C.creamMuted; e.target.style.color = C.creamDim; }}
-          >{COPY.hero.ctaSecondary}</button>
         </div>
       </div>
 

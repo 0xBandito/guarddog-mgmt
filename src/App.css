@@ -282,7 +282,8 @@ footer {
   .nav-desktop { display: none !important; }
   .nav-mobile-btn { display: flex !important; }
   .why-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
-  .team-grid { grid-template-columns: 1fr !important; }
+  .team-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem !important; }
+  .stats-grid { grid-template-columns: 1fr !important; gap: 1.25rem !important; }
   .services-index-grid { grid-template-columns: 1fr !important; }
   .form-grid { grid-template-columns: 1fr !important; }
   .contact-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
@@ -294,16 +295,95 @@ footer {
 
   #scroll-container { height: 950vh; }
 
+  /* Tall sections (services, stats, team) on mobile: start from top with
+     space for the nav, so content taller than the viewport still shows
+     its heading instead of being clipped by center-alignment.
+     Short sections (mission, cta) stay centered. */
+  .scroll-section:not(.mission-section):not(.cta-section) {
+    align-items: flex-start !important;
+    padding-top: 13vh !important;
+    padding-bottom: 6vh !important;
+  }
+
   .align-left,
   .align-right,
   .align-center {
-    padding: 0 5vw;
+    padding-left: 5vw !important;
+    padding-right: 5vw !important;
     justify-content: flex-start;
     text-align: left;
   }
   .align-left .section-inner,
   .align-right .section-inner,
   .align-center .section-inner { max-width: 100%; }
+
+  /* Section headings: tighter on mobile so they don't eat all the vertical space */
+  .scroll-section .section-heading {
+    font-size: clamp(1.65rem, 7.5vw, 2.2rem) !important;
+    margin-bottom: 1.25rem !important;
+    line-height: 1.08 !important;
+  }
+  .scroll-section .section-label {
+    margin-bottom: 0.75rem !important;
+    font-size: 0.6rem !important;
+  }
+
+  /* Services sub-rows: tighten so all 4 fit comfortably */
+  .service-subrow {
+    padding: 0.85rem 0 !important;
+    gap: 0.75rem !important;
+  }
+  .service-subrow h3 {
+    font-size: 1rem !important;
+    margin-bottom: 0.15rem !important;
+  }
+  .service-subrow p {
+    font-size: 0.8rem !important;
+    line-height: 1.45 !important;
+  }
+  .service-subrow .svc-num {
+    font-size: 0.6rem !important;
+    padding-top: 0.15rem !important;
+    min-width: 18px !important;
+  }
+  .service-subrow .svc-arrow { font-size: 0.85rem !important; }
+
+  /* Stats: single column — each stat gets its own row, no cut-off */
+  .stats-grid .stat { text-align: left !important; }
+  .stats-grid .stat-number {
+    font-size: clamp(1.8rem, 8vw, 2.6rem) !important;
+  }
+  .stats-grid .stat p {
+    font-size: 0.72rem !important;
+    max-width: 100% !important;
+  }
+
+  /* Team: 2x2 on mobile so all 4 members show without scroll */
+  .team-member {
+    padding: 1.1rem 0.9rem 1rem !important;
+  }
+  .team-member .team-avatar,
+  .team-member > div:nth-of-type(2) {
+    width: 40px !important;
+    height: 40px !important;
+    margin-bottom: 0.9rem !important;
+  }
+  .team-member p:nth-last-of-type(2) { font-size: 0.85rem !important; }
+  .team-member p:last-of-type {
+    font-size: 0.55rem !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  /* CTA: ensure button + text fit */
+  .cta-section .section-heading {
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+  }
+  .cta-primary-btn {
+    padding: 1.2rem 2.2rem !important;
+    font-size: 0.8rem !important;
+    width: 100% !important;
+    max-width: 320px !important;
+  }
 
   .scroll-section .section-inner.has-backdrop {
     background: rgba(12,11,9,0.72);
