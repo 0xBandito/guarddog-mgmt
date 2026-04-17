@@ -94,6 +94,15 @@ footer {
   z-index: 7;
 }
 
+/* Contact form success confirmation fade-in */
+@keyframes contactSuccessIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-success { animation: none !important; }
+}
+
 /* Subtle bounce + opacity pulse for the hero scroll hint.
    Kept gentle so it never competes with the CTAs above it. */
 .hero-scroll-inner {

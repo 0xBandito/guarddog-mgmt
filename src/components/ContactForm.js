@@ -43,17 +43,56 @@ const INITIAL = {
   botcheck: "",
 };
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const PHONE_RE = /^[+\d()\-\s.]{7,}$/; // lenient; phone optional
+// Email: requires local@domain.tld pattern with a sensible TLD and no stray
+// whitespace. Tight enough to block common typos, permissive enough for real
+// addresses (plus-addressing, subdomains, etc.).
+const EMAIL_RE = /^[A-Za-z0-9._%+\-]+@[A-Za-z0-9](?:[A-Za-z0-9\-]*[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9\-]*[A-Za-z0-9])?)*\.[A-Za-z]{2,}$/;
+
+// Auto-format a phone number input as the user types.
+// - Allows "+" only as the first character (for international prefixes)
+// - Strips everything else that isn't a digit
+// - US format: "(XXX) XXX-XXXX" capped at 10 digits
+// - International (starts with +): "+CC XXX XXX XXXX" capped at 15 digits total
+function formatPhone(raw) {
+  if (!raw) return "";
+  const startsWithPlus = raw.trim().startsWith("+");
+  const digits = raw.replace(/\D/g, "");
+
+  if (startsWithPlus) {
+    const d = digits.slice(0, 15);
+    if (d.length === 0) return "+";
+    if (d.length <= 3) return "+" + d;
+    if (d.length <= 6) return "+" + d.slice(0, 3) + " " + d.slice(3);
+    if (d.length <= 10) return "+" + d.slice(0, 3) + " " + d.slice(3, 6) + " " + d.slice(6);
+    return "+" + d.slice(0, 3) + " " + d.slice(3, 6) + " " + d.slice(6, 10) + " " + d.slice(10);
+  }
+
+  const d = digits.slice(0, 10);
+  if (d.length === 0) return "";
+  if (d.length <= 3) return d;
+  if (d.length <= 6) return `(${d.slice(0, 3)}) ${d.slice(3)}`;
+  return `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6, 10)}`;
+}
+
+// Validate a formatted phone value. Optional field — empty is OK.
+// US: exactly 10 digits. International (leads with "+"): 8–15 digits.
+function isValidPhone(formatted) {
+  if (!formatted || !formatted.trim()) return true;
+  const digits = formatted.replace(/\D/g, "");
+  if (formatted.trim().startsWith("+")) {
+    return digits.length >= 8 && digits.length <= 15;
+  }
+  return digits.length === 10;
+}
 
 function validate(values) {
   const errors = {};
   if (!values.first_name.trim()) errors.first_name = "Required";
   if (!values.last_name.trim()) errors.last_name = "Required";
   if (!values.email.trim()) errors.email = "Required";
-  else if (!EMAIL_RE.test(values.email.trim())) errors.email = "Invalid email";
-  if (values.phone.trim() && !PHONE_RE.test(values.phone.trim())) {
-    errors.phone = "Invalid phone";
+  else if (!EMAIL_RE.test(values.email.trim())) errors.email = "Enter a valid email address";
+  if (values.phone.trim() && !isValidPhone(values.phone)) {
+    errors.phone = "Enter a valid 10-digit phone number";
   }
   if (!values.service) errors.service = "Please choose one";
   if (!values.message.trim()) errors.message = "Required";
@@ -68,14 +107,32 @@ export default function ContactForm() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const update = (field) => (e) => {
-    setValues((v) => ({ ...v, [field]: e.target.value }));
+    let next = e.target.value;
+    // Auto-format phone as the user types so only valid phone characters
+    // are ever accepted into state.
+    if (field === "phone") next = formatPhone(next);
+    setValues((v) => ({ ...v, [field]: next }));
     // Clear error on the field as soon as the user starts correcting it
     if (errors[field]) {
       setErrors((prev) => {
-        const next = { ...prev };
-        delete next[field];
-        return next;
+        const n = { ...prev };
+        delete n[field];
+        return n;
       });
+    }
+  };
+
+  // Validate email on blur so the user gets feedback before submission
+  const validateFieldOnBlur = (field) => () => {
+    if (field === "email" && values.email.trim()) {
+      if (!EMAIL_RE.test(values.email.trim())) {
+        setErrors((prev) => ({ ...prev, email: "Enter a valid email address" }));
+      }
+    }
+    if (field === "phone" && values.phone.trim()) {
+      if (!isValidPhone(values.phone)) {
+        setErrors((prev) => ({ ...prev, phone: "Enter a valid 10-digit phone number" }));
+      }
     }
   };
 
@@ -137,18 +194,34 @@ export default function ContactForm() {
       if (res.ok && data.success) {
         setStatus("success");
         setValues(INITIAL);
+        // Clear any lingering per-field errors on success
+        setErrors({});
       } else {
         setStatus("error");
-        // Don't leak backend detail to the user — generic message
-        setErrorMessage(
-          "Something went wrong sending your message. Please try again in a moment, or email " +
-            COPY.contact.email
-        );
+        // Show a short, non-technical message. Specific codes help the user
+        // without exposing backend detail.
+        if (res.status === 429) {
+          setErrorMessage(
+            "Too many submissions right now. Please wait a moment and try again."
+          );
+        } else if (res.status >= 500) {
+          setErrorMessage(
+            "The server had trouble handling your message. Please try again shortly, or email " +
+              COPY.contact.email
+          );
+        } else {
+          setErrorMessage(
+            "We couldn't send your message. Please double-check your info or email " +
+              COPY.contact.email
+          );
+        }
       }
     } catch (err) {
+      // Network failure, offline, CORS blocked, etc.
       setStatus("error");
       setErrorMessage(
-        "Couldn't reach the server. Check your connection or email " + COPY.contact.email
+        "Couldn't reach the server. Check your internet connection or email " +
+          COPY.contact.email
       );
     }
   };
@@ -159,12 +232,14 @@ export default function ContactForm() {
       <div
         role="status"
         aria-live="polite"
+        className="contact-success"
         style={{
           background: C.bgCard,
           border: `1px solid ${C.greenBorder}`,
           padding: "2.5rem 2rem",
           textAlign: "center",
           fontFamily: "'Manrope', sans-serif",
+          animation: "contactSuccessIn 0.5s ease-out",
         }}
       >
         <div
@@ -289,7 +364,10 @@ export default function ContactForm() {
           style={{ ...inputStyle, ...(errors.email ? invalidStyle : null) }}
           data-invalid={errors.email ? "true" : undefined}
           onFocus={focusHandler}
-          onBlur={blurHandler}
+          onBlur={(e) => {
+            blurHandler(e);
+            validateFieldOnBlur("email")();
+          }}
           aria-invalid={errors.email ? "true" : undefined}
           autoComplete="email"
           maxLength={120}
@@ -302,16 +380,19 @@ export default function ContactForm() {
         <input
           type="tel"
           name="phone"
-          placeholder="Phone (optional)"
+          placeholder="Phone (optional) — (555) 123-4567"
           value={values.phone}
           onChange={update("phone")}
           style={{ ...inputStyle, ...(errors.phone ? invalidStyle : null) }}
           data-invalid={errors.phone ? "true" : undefined}
           onFocus={focusHandler}
-          onBlur={blurHandler}
+          onBlur={(e) => {
+            blurHandler(e);
+            validateFieldOnBlur("phone")();
+          }}
           aria-invalid={errors.phone ? "true" : undefined}
           autoComplete="tel"
-          maxLength={25}
+          maxLength={20}
           inputMode="tel"
         />
         {errors.phone && <FieldError msg={errors.phone} />}
