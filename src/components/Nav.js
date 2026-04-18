@@ -67,13 +67,13 @@ export default function Nav() {
         }}
       >
         <img
-          src="/images/guarddogmgmt-logo.png"
+          src="/images/guarddogmgmt-logo.svg"
           alt=""
           aria-hidden="true"
           draggable="false"
           style={{
-            height: "48px",
-            width: "auto",
+            height: "40px",
+            width: "40px",
             display: "block",
             cursor: "pointer",
           }}
