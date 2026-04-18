@@ -9,7 +9,7 @@ export default function Footer() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1.5rem", marginBottom: "1.5rem" }}>
           <Link to="/" style={{ textDecoration: "none" }}>
             <img
-              src="/images/guarddogmgmt-logo.svg"
+              src="/images/guarddogmgmt-logo.png"
               alt="Guard Dog Management Inc."
               style={{ height: "36px", width: "36px", display: "block" }}
             />

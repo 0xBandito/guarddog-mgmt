@@ -67,7 +67,7 @@ export default function Nav() {
         }}
       >
         <img
-          src="/images/guarddogmgmt-logo.svg"
+          src="/images/guarddogmgmt-logo.png"
           alt=""
           aria-hidden="true"
           draggable="false"

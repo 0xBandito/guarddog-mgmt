@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Guard Dog Management">
-  <rect width="64" height="64" rx="12" ry="12" fill="#0C0B09"/>
-  <rect x="1" y="1" width="62" height="62" rx="11" ry="11" fill="none" stroke="#4ADE80" stroke-width="1.5" opacity="0.25"/>
-  <text x="32" y="44" font-family="'Archivo Black', 'Arial Black', Impact, sans-serif" font-size="26" font-weight="900" fill="#4ADE80" text-anchor="middle" letter-spacing="-0.5">GD</text>
-</svg>

@@ -15,9 +15,9 @@
       "type": "image/png"
     },
     {
-      "src": "images/guarddogmgmt-logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "images/guarddogmgmt-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
     },
     {
       "src": "images/og-image.png",
