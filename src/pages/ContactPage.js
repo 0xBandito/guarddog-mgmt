@@ -6,9 +6,9 @@ import ContactForm from "../components/ContactForm";
 
 export default function ContactPage() {
   usePageMeta({
-    title: "Contact — Let's Build with Guard Dog Management",
+    title: "Contact | Let's Build with Guard Dog Management",
     description:
-      "Whether you just signed your first NIL deal or you're looking for long-term wealth strategy, we're here. No pressure, no pitch — just a conversation about protecting what is yours.",
+      "Whether you just signed your first NIL deal or you're looking for long-term wealth strategy, we're here. No pressure, no pitch. Just a conversation about protecting what is yours.",
     path: "/contact",
   });
 

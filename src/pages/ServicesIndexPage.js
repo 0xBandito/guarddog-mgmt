@@ -7,7 +7,7 @@ import CTABanner from "../components/CTABanner";
 
 export default function ServicesIndexPage() {
   usePageMeta({
-    title: "Services — Guard Dog Management",
+    title: "Services | Guard Dog Management",
     description:
       "NIL representation for high school and college athletes. From the first deal to the transfer portal window, Guard Dog protects the bag at every stage of your earning career.",
     path: "/services",

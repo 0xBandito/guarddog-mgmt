@@ -50,7 +50,7 @@ export default function Nav() {
       <Link
         to="/"
         onClick={handleLogoClick}
-        aria-label="Guard Dog Management — Home"
+        aria-label="Guard Dog Management Home"
         className="nav-logo-link"
         style={{
           cursor: "pointer",

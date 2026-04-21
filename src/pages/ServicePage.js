@@ -12,8 +12,8 @@ export default function ServicePage() {
   // Safe default for meta when slug is invalid (Navigate still fires below)
   usePageMeta({
     title: service
-      ? `${service.title} — Guard Dog Management`
-      : "Service — Guard Dog Management",
+      ? `${service.title} | Guard Dog Management`
+      : "Service | Guard Dog Management",
     description: service ? service.body : undefined,
     path: service ? `/services/${service.slug}` : undefined,
   });

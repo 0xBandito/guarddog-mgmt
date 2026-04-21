@@ -18,10 +18,10 @@ export const COPY = {
   },
   mission: "We help athletes earn, manage, and maximize their NIL opportunities while developing into professionals on and off the field.",
   services: {
-    tag: "What We Do",
+    tag: "Services",
     headline: "The Deals That Define Careers.",
     intro:
-      "Your NIL career has two chapters now: high school and college. Every contract, every negotiation, every transfer portal window — Guard Dog represents athletes through all of it.",
+      "Your NIL career has two chapters now: high school and college. Every contract, every negotiation, every transfer portal window. Guard Dog represents athletes through all of it.",
     items: [
       {
         title: "High School NIL Representation",
@@ -47,7 +47,7 @@ export const COPY = {
         title: "College NIL Representation",
         slug: "college-nil",
         num: "02",
-        body: "Six-figure deals are landing in dorm rooms with nobody reading the fine print. We negotiate, protect, and manage the full NIL life of a college athlete — from first campus deal to the transfer portal window.",
+        body: "Six-figure deals are landing in dorm rooms with nobody reading the fine print. We negotiate, protect, and manage the full NIL life of a college athlete, from first campus deal to the transfer portal window.",
         detail: {
           tagline: "Every deal you sign in college sets the number on every deal after it.",
           paragraphs: [

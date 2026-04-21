@@ -380,7 +380,7 @@ export default function ContactForm() {
         <input
           type="tel"
           name="phone"
-          placeholder="Phone (optional) — (555) 123-4567"
+          placeholder="Phone (optional). (555) 123-4567"
           value={values.phone}
           onChange={update("phone")}
           style={{ ...inputStyle, ...(errors.phone ? invalidStyle : null) }}

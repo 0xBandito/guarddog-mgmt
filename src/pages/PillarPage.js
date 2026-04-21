@@ -11,8 +11,8 @@ export default function PillarPage() {
 
   usePageMeta({
     title: pillar
-      ? `${pillar.title} — Guard Dog Management`
-      : "Pillar — Guard Dog Management",
+      ? `${pillar.title} | Guard Dog Management`
+      : "Pillar | Guard Dog Management",
     description: pillar ? pillar.body : undefined,
     path: pillar ? `/why-guard-dogs/${pillar.slug}` : undefined,
   });

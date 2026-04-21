@@ -184,7 +184,7 @@ function MissionSection() {
   return (
     <section
       className="scroll-section align-center mission-section"
-      data-enter="42" data-leave="52" data-animation="fade-up"
+      data-enter="42" data-leave="50" data-animation="fade-up"
     >
       {/* Dark radial scrim — darkens canvas behind the text, fades to transparent at edges */}
       <div className="mission-scrim" aria-hidden="true" />
@@ -229,7 +229,7 @@ function ServicesSection() {
   return (
     <section
       className="scroll-section align-left services-section"
-      data-enter="52" data-leave="65" data-animation="slide-left"
+      data-enter="50" data-leave="58" data-animation="slide-left"
     >
       {/* Left-side scrim — darkens the canvas behind the services text */}
       <div className="services-scrim" aria-hidden="true" />
@@ -368,32 +368,304 @@ function ServicesSection() {
             </Link>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
 
+/* ===== What We Do (pillars on homepage) =====
+   Links each pillar row to its detail page under /why-guard-dogs/:slug. */
+function WhatWeDoSection() {
+  return (
+    <section
+      className="scroll-section align-left"
+      data-enter="58" data-leave="67" data-animation="slide-left"
+    >
+      <div className="services-scrim" aria-hidden="true" />
+      <div className="section-inner" style={{ position: "relative", zIndex: 2 }}>
         <div
-          className="section-foot"
-          style={{ marginTop: "2rem" }}
+          className="section-label"
+          style={{
+            fontFamily: "'Manrope', sans-serif",
+            fontSize: "0.68rem",
+            letterSpacing: "0.35em",
+            textTransform: "uppercase",
+            color: C.greenAccent,
+            fontWeight: 600,
+            marginBottom: "1.2rem",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.75rem",
+          }}
         >
-          <Link
-            to="/why-guard-dogs"
-            className="section-note"
-            style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontSize: "0.7rem",
-              color: C.green,
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              fontWeight: 600,
-              textDecoration: "none",
-              borderBottom: `1px solid ${C.greenBorder}`,
-              paddingBottom: "0.3rem",
-            }}
-          >
-            Why Guard Dog &rarr;
-          </Link>
+          <span style={{ width: 24, height: 1, background: C.greenAccent }} />
+          {COPY.why.pillarsTag}
+        </div>
+        <h2
+          className="section-heading"
+          style={{
+            fontFamily: "'Archivo Black', sans-serif",
+            fontSize: "clamp(2rem, 3.6vw, 3.2rem)",
+            fontWeight: 400,
+            color: C.cream,
+            lineHeight: 1.05,
+            letterSpacing: "-0.015em",
+            marginBottom: "2.5rem",
+            textTransform: "uppercase",
+            whiteSpace: "normal",
+            overflowWrap: "break-word",
+          }}
+        >
+          Full Coverage.<br />
+          No Blind Spots<span style={{ color: C.green }}>.</span>
+        </h2>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+          {COPY.why.pillars.map((p) => (
+            <Link
+              key={p.slug}
+              to={`/why-guard-dogs/${p.slug}`}
+              className="service-subrow"
+              style={{
+                textDecoration: "none",
+                display: "grid",
+                gridTemplateColumns: "auto 1fr auto",
+                gap: "1.5rem",
+                alignItems: "center",
+                padding: "1.35rem 0",
+                borderTop: `1px solid ${C.border}`,
+                transition: "border-color 0.3s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderTopColor = C.green;
+                const arr = e.currentTarget.querySelector(".svc-arrow");
+                if (arr) arr.style.transform = "translateX(4px)";
+                const num = e.currentTarget.querySelector(".svc-num");
+                if (num) num.style.color = C.green;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderTopColor = C.border;
+                const arr = e.currentTarget.querySelector(".svc-arrow");
+                if (arr) arr.style.transform = "translateX(0)";
+                const num = e.currentTarget.querySelector(".svc-num");
+                if (num) num.style.color = C.creamMuted;
+              }}
+            >
+              <span
+                className="svc-num"
+                style={{
+                  fontFamily: "'Manrope', sans-serif",
+                  fontSize: "0.75rem",
+                  color: C.creamMuted,
+                  letterSpacing: "0.15em",
+                  fontWeight: 600,
+                  transition: "color 0.3s",
+                  minWidth: 28,
+                  paddingTop: "0.35rem",
+                  textShadow: "0 2px 8px rgba(0,0,0,0.5)",
+                }}
+              >{p.num}</span>
+              <div>
+                <h3
+                  style={{
+                    fontFamily: "'Archivo Black', sans-serif",
+                    fontSize: "clamp(1.3rem, 1.75vw, 1.7rem)",
+                    color: C.cream,
+                    fontWeight: 400,
+                    letterSpacing: "0.01em",
+                    marginBottom: "0.5rem",
+                    textTransform: "uppercase",
+                    textShadow: "0 2px 16px rgba(0,0,0,0.6)",
+                  }}
+                >{p.title}</h3>
+                <p
+                  style={{
+                    fontFamily: "'Manrope', sans-serif",
+                    fontSize: "clamp(0.95rem, 1.05vw, 1.05rem)",
+                    color: "rgba(232,228,220,0.82)",
+                    lineHeight: 1.65,
+                    fontWeight: 400,
+                    textShadow: "0 2px 12px rgba(0,0,0,0.6)",
+                  }}
+                >{p.body}</p>
+              </div>
+              <span
+                className="svc-arrow"
+                style={{
+                  color: C.creamMuted,
+                  fontSize: "1rem",
+                  transition: "transform 0.3s, color 0.3s",
+                  paddingTop: "0.25rem",
+                  textShadow: "0 2px 8px rgba(0,0,0,0.5)",
+                }}
+              >&rarr;</span>
+            </Link>
+          ))}
         </div>
       </div>
     </section>
   );
+}
+
+/* ===== Why Guard Dog (body + stats + footnote) =====
+   Counter animation fires at scroll 0.66-0.72 (hardcoded in useScrollScene).
+   Kept within this section's scroll range so numbers tick up in place. */
+function WhyGuardDogSection() {
+  return (
+    <section
+      className="scroll-section align-center"
+      data-enter="67" data-leave="76" data-animation="stagger-up"
+    >
+      <div className="section-inner">
+        <div
+          className="section-label"
+          style={{
+            fontFamily: "'Manrope', sans-serif",
+            fontSize: "0.7rem",
+            letterSpacing: "0.35em",
+            textTransform: "uppercase",
+            color: C.green,
+            fontWeight: 600,
+            marginBottom: "1.2rem",
+          }}
+        >{COPY.why.tag}</div>
+        <h2
+          className="section-heading"
+          style={{
+            fontFamily: "'Archivo Black', sans-serif",
+            fontSize: "clamp(2rem, 4vw, 3.25rem)",
+            fontWeight: 400,
+            color: C.cream,
+            lineHeight: 1.05,
+            letterSpacing: "-0.01em",
+            marginBottom: "2rem",
+            textTransform: "uppercase",
+          }}
+        >
+          {COPY.why.headline}
+        </h2>
+        <p
+          className="section-body"
+          style={{
+            fontFamily: "'Manrope', sans-serif",
+            fontSize: "clamp(0.95rem, 1.05vw, 1.05rem)",
+            color: "rgba(232,228,220,0.88)",
+            lineHeight: 1.75,
+            fontWeight: 400,
+            maxWidth: 780,
+            margin: "0 auto 3.5rem",
+            textShadow: "0 2px 12px rgba(0,0,0,0.6)",
+          }}
+        >
+          {COPY.why.body}
+        </p>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "3rem",
+            maxWidth: 1100,
+            margin: "0 auto",
+          }}
+          className="stats-grid"
+        >
+          {COPY.why.stats.map((s, i) => {
+            const parsed = parseStat(s.number);
+            return (
+              <div key={i} className="stat" style={{ textAlign: "center" }}>
+                <div
+                  className="stat-number"
+                  data-value={parsed.value}
+                  data-prefix={parsed.prefix}
+                  data-suffix={parsed.suffix}
+                  data-decimals={parsed.decimals}
+                  style={{
+                    fontFamily: "'Archivo Black', sans-serif",
+                    fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
+                    fontWeight: 400,
+                    color: C.green,
+                    lineHeight: 1,
+                    letterSpacing: "-0.01em",
+                    marginBottom: "1rem",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {parsed.prefix}0{parsed.suffix}
+                </div>
+                <p
+                  style={{
+                    fontFamily: "'Manrope', sans-serif",
+                    fontSize: "0.78rem",
+                    color: C.creamDim,
+                    lineHeight: 1.5,
+                    fontWeight: 400,
+                    maxWidth: 260,
+                    margin: "0 auto",
+                  }}
+                >{s.label}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div
+          className="section-foot"
+          style={{
+            margin: "3rem auto 0",
+            maxWidth: 680,
+            display: "flex",
+            alignItems: "flex-start",
+            gap: "1rem",
+            padding: "1.5rem 1.75rem",
+            borderLeft: `2px solid ${C.green}`,
+            background: "rgba(74,222,128,0.04)",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "'Manrope', sans-serif",
+              fontSize: "0.6rem",
+              color: C.green,
+              letterSpacing: "0.25em",
+              textTransform: "uppercase",
+              fontWeight: 700,
+              flexShrink: 0,
+              paddingTop: "0.15rem",
+              whiteSpace: "nowrap",
+            }}
+          >
+            For Context
+          </span>
+          <p
+            style={{
+              fontFamily: "'Manrope', sans-serif",
+              fontSize: "0.9rem",
+              color: "rgba(232,228,220,0.88)",
+              lineHeight: 1.65,
+              fontWeight: 400,
+              margin: 0,
+            }}
+          >
+            {COPY.why.footnote.replace(/^For context:\s*/i, "")}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* Parse "$1.17B", "2%", "500K+" into counter-animatable components */
+function parseStat(str) {
+  const prefixMatch = str.match(/^[^\d.]+/);
+  const prefix = prefixMatch ? prefixMatch[0] : "";
+  const rest = str.slice(prefix.length);
+  const numMatch = rest.match(/^([\d,.]+)/);
+  const numRaw = numMatch ? numMatch[1].replace(/,/g, "") : "0";
+  const value = parseFloat(numRaw);
+  const suffix = rest.slice(numMatch ? numMatch[1].length : 0);
+  const decimals = (numRaw.split(".")[1] || "").length;
+  return { prefix, value, suffix, decimals };
 }
 
 /* ===== Team Section ===== */
@@ -401,7 +673,7 @@ function TeamSection() {
   return (
     <section
       className="scroll-section align-center"
-      data-enter="65" data-leave="82" data-animation="clip-reveal"
+      data-enter="76" data-leave="85" data-animation="clip-reveal"
     >
       <div className="section-inner">
         <div
@@ -522,7 +794,7 @@ function CTASection() {
   return (
     <section
       className="scroll-section align-center cta-section"
-      data-enter="82" data-leave="100" data-animation="scale-up"
+      data-enter="85" data-leave="100" data-animation="scale-up"
       data-persist="true"
     >
       <div className="cta-scrim" aria-hidden="true" />
@@ -627,9 +899,9 @@ export default function HomePage() {
   const marqueeRef = useRef(null);
 
   usePageMeta({
-    title: "Guard Dog Management — NIL Management for Collegiate Athletes",
+    title: "Guard Dog Management | NIL Management for Collegiate Athletes",
     description:
-      "Guard Dog Management helps collegiate athletes earn, manage, and maximize their NIL opportunities — with athlete development, wealth strategy, tax & compliance, and lifestyle services that keep the bag protected on and off the field.",
+      "Guard Dog Management helps collegiate athletes earn, manage, and maximize their NIL opportunities. Athlete development, wealth strategy, tax & compliance, and lifestyle services that keep the bag protected on and off the field.",
     path: "/",
   });
 
@@ -707,6 +979,8 @@ export default function HomePage() {
       <div ref={scrollContainerRef} id="scroll-container">
         <MissionSection />
         <ServicesSection />
+        <WhatWeDoSection />
+        <WhyGuardDogSection />
         <TeamSection />
         <CTASection />
       </div>
