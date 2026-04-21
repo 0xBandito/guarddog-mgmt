@@ -5,34 +5,33 @@ import useInView from "../hooks/useInView";
 import usePageMeta from "../hooks/usePageMeta";
 import CTABanner from "../components/CTABanner";
 
-export default function ServicePage() {
+export default function PillarPage() {
   const { slug } = useParams();
-  const service = COPY.services.items.find((s) => s.slug === slug);
+  const pillar = COPY.why.pillars.find((p) => p.slug === slug);
 
-  // Safe default for meta when slug is invalid (Navigate still fires below)
   usePageMeta({
-    title: service
-      ? `${service.title} — Guard Dog Management`
-      : "Service — Guard Dog Management",
-    description: service ? service.body : undefined,
-    path: service ? `/services/${service.slug}` : undefined,
+    title: pillar
+      ? `${pillar.title} — Guard Dog Management`
+      : "Pillar — Guard Dog Management",
+    description: pillar ? pillar.body : undefined,
+    path: pillar ? `/why-guard-dogs/${pillar.slug}` : undefined,
   });
 
-  if (!service) return <Navigate to="/" replace />;
+  if (!pillar) return <Navigate to="/why-guard-dogs" replace />;
 
-  const otherServices = COPY.services.items.filter((s) => s.slug !== slug);
+  const otherPillars = COPY.why.pillars.filter((p) => p.slug !== slug);
 
   return (
     <>
-      <ServiceHero service={service} />
-      <ServiceDetail service={service} />
-      <RelatedServices services={otherServices} />
+      <PillarHero pillar={pillar} />
+      <PillarDetail pillar={pillar} />
+      <RelatedPillars pillars={otherPillars} />
       <CTABanner />
     </>
   );
 }
 
-function ServiceHero({ service }) {
+function PillarHero({ pillar }) {
   return (
     <section style={{
       minHeight: "50vh", background: C.bg,
@@ -49,7 +48,7 @@ function ServiceHero({ service }) {
           fontWeight: 600, display: "flex", alignItems: "center", gap: "0.75rem",
         }}>
           <span style={{ width: 20, height: 1, background: C.greenAccent, display: "inline-block" }} />
-          Pillar {service.num}
+          Pillar {pillar.num}
         </div>
         <h1 style={{
           fontFamily: "'Archivo Black', sans-serif",
@@ -57,21 +56,21 @@ function ServiceHero({ service }) {
           fontWeight: 400, lineHeight: 1, letterSpacing: "-0.02em",
           color: C.cream, marginBottom: "1.5rem",
         }}>
-          {service.title}<span style={{ color: C.green }}>.</span>
+          {pillar.title}<span style={{ color: C.green }}>.</span>
         </h1>
         <p style={{
           fontFamily: "'Manrope', sans-serif", fontSize: "1.05rem",
           color: C.creamDim, fontWeight: 400, maxWidth: 550, lineHeight: 1.7,
           fontStyle: "italic",
         }}>
-          {service.detail.tagline}
+          {pillar.detail.tagline}
         </p>
       </div>
     </section>
   );
 }
 
-function ServiceDetail({ service }) {
+function PillarDetail({ pillar }) {
   const [ref, inView] = useInView();
   return (
     <section ref={ref} style={{ background: C.bgAlt, padding: "6rem 3rem 7rem", position: "relative" }}>
@@ -80,11 +79,11 @@ function ServiceDetail({ service }) {
           opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(-24px)",
           transition: "opacity 0.8s ease, transform 0.8s ease",
         }}>
-          {service.detail.paragraphs.map((p, i) => (
+          {pillar.detail.paragraphs.map((p, i) => (
             <p key={i} style={{
               fontFamily: "'Manrope', sans-serif", fontSize: "0.95rem",
               color: C.creamDim, lineHeight: 1.9, fontWeight: 400,
-              marginBottom: i < service.detail.paragraphs.length - 1 ? "2rem" : 0,
+              marginBottom: i < pillar.detail.paragraphs.length - 1 ? "2rem" : 0,
             }}>{p}</p>
           ))}
         </div>
@@ -102,7 +101,7 @@ function ServiceDetail({ service }) {
             What's Included
           </p>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {service.detail.features.map((f, i) => (
+            {pillar.detail.features.map((f, i) => (
               <div key={i} style={{
                 padding: "1.25rem 0",
                 borderBottom: `1px solid ${C.border}`,
@@ -122,7 +121,7 @@ function ServiceDetail({ service }) {
   );
 }
 
-function RelatedServices({ services }) {
+function RelatedPillars({ pillars }) {
   const [ref, inView] = useInView();
   return (
     <section ref={ref} style={{ background: C.bg, padding: "6rem 3rem 7rem" }}>
@@ -133,11 +132,11 @@ function RelatedServices({ services }) {
           fontWeight: 600, display: "flex", alignItems: "center", gap: "0.75rem",
         }}>
           <span style={{ width: 20, height: 1, background: C.greenAccent, display: "inline-block" }} />
-          Other Services
+          Other Pillars
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(3, services.length)}, 1fr)`, gap: "1.5rem" }} className="team-grid">
-          {services.map((s, i) => (
-            <Link key={s.slug} to={`/services/${s.slug}`} style={{ textDecoration: "none" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem" }} className="team-grid">
+          {pillars.map((p, i) => (
+            <Link key={p.slug} to={`/why-guard-dogs/${p.slug}`} style={{ textDecoration: "none" }}>
               <div style={{
                 background: C.bgCard, border: `1px solid ${C.border}`,
                 padding: "2.5rem 2rem",
@@ -151,16 +150,16 @@ function RelatedServices({ services }) {
                   fontFamily: "'Manrope', sans-serif", fontSize: "0.55rem",
                   color: C.creamMuted, letterSpacing: "0.1em", fontWeight: 600,
                   marginBottom: "1.5rem",
-                }}>{s.num}</div>
+                }}>{p.num}</div>
                 <h3 style={{
                   fontFamily: "'Archivo Black', sans-serif", fontSize: "1.1rem",
                   color: C.cream, fontWeight: 400, letterSpacing: "0.01em",
                   lineHeight: 1.2, marginBottom: "0.75rem",
-                }}>{s.title}</h3>
+                }}>{p.title}</h3>
                 <p style={{
                   fontFamily: "'Manrope', sans-serif", fontSize: "0.78rem",
                   color: C.creamDim, lineHeight: 1.7, fontWeight: 400,
-                }}>{s.body}</p>
+                }}>{p.body}</p>
               </div>
             </Link>
           ))}

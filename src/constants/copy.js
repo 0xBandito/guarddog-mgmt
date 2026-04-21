@@ -19,8 +19,65 @@ export const COPY = {
   mission: "We help athletes earn, manage, and maximize their NIL opportunities while developing into professionals on and off the field.",
   services: {
     tag: "What We Do",
-    headline: "Full Coverage. No Blind Spots.",
+    headline: "The Deals That Define Careers.",
+    intro:
+      "Two moments decide how much of your earnings you actually keep: the first NIL deal you sign, and the next one you negotiate. Guard Dog represents athletes at both.",
     items: [
+      {
+        title: "High School NIL Representation",
+        slug: "high-school-nil",
+        num: "01",
+        body: "High school athletes are cashing NIL checks before they can legally sign a lease. We make sure the first dollar earned builds a foundation that lasts.",
+        detail: {
+          tagline: "The youngest generation of athletes ever to earn. We protect them first.",
+          paragraphs: [
+            "High school NIL is here, and most athletes and families are walking into it without representation, without structure, and without anyone watching the money. Guard Dog steps in before the first deal gets signed.",
+            "We represent high school athletes across contract review, brand alignment, family education, and long-term planning. From local partnerships to six-figure national deals, we make sure the terms protect the athlete and the money gets handled right.",
+            "The habits that start here compound for life. A player who learns to read a contract at sixteen does not get taken advantage of at twenty-two. A family that understands tax exposure in high school does not get blindsided in college. That is the point.",
+          ],
+          features: [
+            "NIL contract review and negotiation",
+            "Family financial education and planning",
+            "Brand alignment and long-term image strategy",
+            "Tax setup before the first deal closes",
+          ],
+        },
+      },
+      {
+        title: "Transfer Portal Representation",
+        slug: "transfer-portal",
+        num: "02",
+        body: "Your value changes the moment you enter the portal. We make sure you leave with leverage, a plan, and a package that matches what you are actually worth.",
+        detail: {
+          tagline: "The window is short. The decisions stick. Do not move without representation.",
+          paragraphs: [
+            "The transfer portal is where athletes gain the most leverage they will ever have in their collegiate career, and also where most of them leave money on the table. Programs move fast. Deadlines are real. Offers come layered.",
+            "Guard Dog represents athletes entering the portal. We evaluate NIL packages across competing programs, pressure-test promises, and negotiate on your behalf so the deal on paper matches the offer on the phone.",
+            "And when the deal is signed, we do not disappear. The same infrastructure that secured a fair package then manages your new tax exposure, compliance across state lines, and the rest of your financial life at the new school.",
+          ],
+          features: [
+            "Multi-program NIL package evaluation",
+            "Direct negotiation with collectives and brands",
+            "State-to-state tax and compliance transition",
+            "Full wealth strategy at the new school",
+          ],
+        },
+      },
+    ],
+  },
+  why: {
+    tag: "Why Guard Dog",
+    headline: "Built for Athletes. Not Banks.",
+    body: "NIL changed the game overnight. College athletes are signing six-figure deals with no financial infrastructure around them. No tax prep. No investment strategy. No one watching the money. Guard Dog was built to fill that gap, because the habits you build now determine whether you are set for life or starting over.",
+    stats: [
+      { number: "$1.17B", label: "in NIL deals signed by college athletes since 2021" },
+      { number: "2%", label: "of college athletes have any form of professional financial guidance" },
+      { number: "500K+", label: "college athletes now eligible for NIL income with zero financial training" },
+    ],
+    footnote: "For context: 78% of NFL and 60% of NBA players face financial hardship within 5 years of retirement. The pattern starts in college.",
+    pillarsTag: "What We Do",
+    pillarsHeadline: "Full Coverage. No Blind Spots.",
+    pillars: [
       {
         title: "Athlete Development",
         slug: "athlete-development",
@@ -103,17 +160,6 @@ export const COPY = {
       },
     ],
   },
-  why: {
-    tag: "Why Guard Dog",
-    headline: "Built for Athletes. Not Banks.",
-    body: "NIL changed the game overnight. College athletes are signing six-figure deals with no financial infrastructure around them. No tax prep. No investment strategy. No one watching the money. Guard Dog was built to fill that gap, because the habits you build now determine whether you are set for life or starting over.",
-    stats: [
-      { number: "$1.17B", label: "in NIL deals signed by college athletes since 2021" },
-      { number: "2%", label: "of college athletes have any form of professional financial guidance" },
-      { number: "500K+", label: "college athletes now eligible for NIL income with zero financial training" },
-    ],
-    footnote: "For context: 78% of NFL and 60% of NBA players face financial hardship within 5 years of retirement. The pattern starts in college.",
-  },
   about: {
     tag: "The Team",
     headline: "People Who Get It.",
@@ -137,6 +183,8 @@ export const COPY = {
     email: "qjones0205@gmail.com",
     location: "Atlanta, GA",
     serviceOptions: [
+      "High School NIL Representation",
+      "Transfer Portal Representation",
       "Athlete Development",
       "Wealth Strategy",
       "Tax & Compliance",

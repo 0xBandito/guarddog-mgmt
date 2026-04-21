@@ -9,7 +9,7 @@ export default function ServicesIndexPage() {
   usePageMeta({
     title: "Services — Guard Dog Management",
     description:
-      "Full-coverage NIL management for collegiate athletes: athlete development, wealth strategy, tax & compliance, and lifestyle. Four pillars, one goal — protect the bag.",
+      "NIL representation for high school athletes and college transfer portal entrants. Guard Dog protects the bag at the moments where most athletes leave money on the table.",
     path: "/services",
   });
 
@@ -86,7 +86,7 @@ export default function ServicesIndexPage() {
                 maxWidth: 640,
               }}
             >
-              Four pillars, one goal: make sure the money you earn on the field works for you long after the cleats come off. Each service below can stand on its own or plug into a full-coverage strategy built around your career.
+              {COPY.services.intro}
             </p>
           </div>
         </div>

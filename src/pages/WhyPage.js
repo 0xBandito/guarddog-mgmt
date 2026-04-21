@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { C } from "../constants/colors";
 import { COPY } from "../constants/copy";
 import useInView from "../hooks/useInView";
@@ -13,6 +14,7 @@ export default function WhyPage() {
   });
 
   const [ref, inView] = useInView();
+  const [pillarsRef, pillarsInView] = useInView();
   return (
     <>
       <section ref={ref} style={{ background: C.bg, padding: "10rem 3rem 8rem", position: "relative" }}>
@@ -62,7 +64,145 @@ export default function WhyPage() {
           </div>
         </div>
       </section>
+
+      <PillarsSection pillarsRef={pillarsRef} pillarsInView={pillarsInView} />
+
       <CTABanner />
     </>
+  );
+}
+
+function PillarsSection({ pillarsRef, pillarsInView }) {
+  return (
+    <section ref={pillarsRef} style={{ background: C.bgAlt, padding: "6rem 3rem 8rem", position: "relative" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <div
+          style={{
+            marginBottom: "3rem",
+            opacity: pillarsInView ? 1 : 0,
+            transform: pillarsInView ? "translateY(0)" : "translateY(24px)",
+            transition: "opacity 0.8s ease, transform 0.8s ease",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "'Manrope', sans-serif",
+              fontSize: "0.68rem",
+              letterSpacing: "0.35em",
+              textTransform: "uppercase",
+              color: C.greenAccent,
+              fontWeight: 600,
+              marginBottom: "1.2rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.75rem",
+            }}
+          >
+            <span style={{ width: 24, height: 1, background: C.greenAccent }} />
+            {COPY.why.pillarsTag}
+          </p>
+          <h2
+            style={{
+              fontFamily: "'Archivo Black', sans-serif",
+              fontSize: "clamp(2rem, 3.6vw, 3.2rem)",
+              fontWeight: 400,
+              color: C.cream,
+              lineHeight: 1.05,
+              letterSpacing: "-0.015em",
+              textTransform: "uppercase",
+              whiteSpace: "normal",
+              overflowWrap: "break-word",
+            }}
+          >
+            Full Coverage.<br />
+            No Blind Spots<span style={{ color: C.green }}>.</span>
+          </h2>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+          {COPY.why.pillars.map((p, i) => (
+            <Link
+              key={p.slug}
+              to={`/why-guard-dogs/${p.slug}`}
+              className="service-subrow"
+              style={{
+                textDecoration: "none",
+                display: "grid",
+                gridTemplateColumns: "auto 1fr auto",
+                gap: "1.5rem",
+                alignItems: "center",
+                padding: "1.35rem 0",
+                borderTop: `1px solid ${C.border}`,
+                transition: "border-color 0.3s, opacity 0.6s ease, transform 0.6s ease",
+                opacity: pillarsInView ? 1 : 0,
+                transform: pillarsInView ? "translateY(0)" : "translateY(16px)",
+                transitionDelay: `${0.1 + i * 0.08}s`,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderTopColor = C.green;
+                const arr = e.currentTarget.querySelector(".svc-arrow");
+                if (arr) arr.style.transform = "translateX(4px)";
+                const num = e.currentTarget.querySelector(".svc-num");
+                if (num) num.style.color = C.green;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderTopColor = C.border;
+                const arr = e.currentTarget.querySelector(".svc-arrow");
+                if (arr) arr.style.transform = "translateX(0)";
+                const num = e.currentTarget.querySelector(".svc-num");
+                if (num) num.style.color = C.creamMuted;
+              }}
+            >
+              <span
+                className="svc-num"
+                style={{
+                  fontFamily: "'Manrope', sans-serif",
+                  fontSize: "0.75rem",
+                  color: C.creamMuted,
+                  letterSpacing: "0.15em",
+                  fontWeight: 600,
+                  transition: "color 0.3s",
+                  minWidth: 28,
+                  paddingTop: "0.35rem",
+                }}
+              >{p.num}</span>
+              <div>
+                <h3
+                  style={{
+                    fontFamily: "'Archivo Black', sans-serif",
+                    fontSize: "clamp(1.3rem, 1.75vw, 1.7rem)",
+                    color: C.cream,
+                    fontWeight: 400,
+                    letterSpacing: "0.01em",
+                    marginBottom: "0.5rem",
+                    textTransform: "uppercase",
+                  }}
+                >{p.title}</h3>
+                <p
+                  style={{
+                    fontFamily: "'Manrope', sans-serif",
+                    fontSize: "clamp(0.95rem, 1.05vw, 1.05rem)",
+                    color: "rgba(232,228,220,0.82)",
+                    lineHeight: 1.65,
+                    fontWeight: 400,
+                  }}
+                >{p.body}</p>
+              </div>
+              <span
+                className="svc-arrow"
+                style={{
+                  color: C.creamMuted,
+                  fontSize: "1rem",
+                  transition: "transform 0.3s, color 0.3s",
+                  paddingTop: "0.25rem",
+                }}
+              >&rarr;</span>
+            </Link>
+          ))}
+          {/* Closing border so the last row visually completes */}
+          <div style={{ borderTop: `1px solid ${C.border}` }} />
+        </div>
+      </div>
+    </section>
   );
 }

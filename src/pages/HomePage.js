@@ -261,15 +261,30 @@ function ServicesSection() {
             color: C.cream,
             lineHeight: 1.05,
             letterSpacing: "-0.015em",
-            marginBottom: "3rem",
+            marginBottom: "1.25rem",
             textTransform: "uppercase",
             whiteSpace: "normal",
             overflowWrap: "break-word",
           }}
         >
-          Full Coverage.<br />
-          No Blind Spots<span style={{ color: C.green }}>.</span>
+          The Deals That<br />
+          Define Careers<span style={{ color: C.green }}>.</span>
         </h2>
+        <p
+          className="section-body"
+          style={{
+            fontFamily: "'Manrope', sans-serif",
+            fontSize: "clamp(0.95rem, 1.05vw, 1.05rem)",
+            color: "rgba(232,228,220,0.82)",
+            lineHeight: 1.7,
+            fontWeight: 400,
+            maxWidth: 620,
+            marginBottom: "2.5rem",
+            textShadow: "0 2px 12px rgba(0,0,0,0.6)",
+          }}
+        >
+          {COPY.services.intro}
+        </p>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
           {COPY.services.items.map((s) => (
@@ -381,156 +396,12 @@ function ServicesSection() {
   );
 }
 
-/* ===== Stats Section ===== */
-function StatsSection() {
-  return (
-    <section
-      className="scroll-section align-center"
-      data-enter="65" data-leave="73" data-animation="stagger-up"
-    >
-      <div className="section-inner">
-        <div
-          className="section-label"
-          style={{
-            fontFamily: "'Manrope', sans-serif",
-            fontSize: "0.7rem",
-            letterSpacing: "0.35em",
-            textTransform: "uppercase",
-            color: C.green,
-            fontWeight: 600,
-            marginBottom: "1.2rem",
-          }}
-        >{COPY.why.tag}</div>
-        <h2
-          className="section-heading"
-          style={{
-            fontFamily: "'Archivo Black', sans-serif",
-            fontSize: "clamp(2rem, 4vw, 3.25rem)",
-            fontWeight: 400,
-            color: C.cream,
-            lineHeight: 1.05,
-            letterSpacing: "-0.01em",
-            marginBottom: "4rem",
-            textTransform: "uppercase",
-          }}
-        >
-          {COPY.why.headline}
-        </h2>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "3rem",
-            maxWidth: 1100,
-            margin: "0 auto",
-          }}
-          className="stats-grid"
-        >
-          {COPY.why.stats.map((s, i) => {
-            const parsed = parseStat(s.number);
-            return (
-              <div key={i} className="stat" style={{ textAlign: "center" }}>
-                <div
-                  className="stat-number"
-                  data-value={parsed.value}
-                  data-prefix={parsed.prefix}
-                  data-suffix={parsed.suffix}
-                  data-decimals={parsed.decimals}
-                  style={{
-                    fontFamily: "'Archivo Black', sans-serif",
-                    fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
-                    fontWeight: 400,
-                    color: C.green,
-                    lineHeight: 1,
-                    letterSpacing: "-0.01em",
-                    marginBottom: "1rem",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {parsed.prefix}0{parsed.suffix}
-                </div>
-                <p
-                  style={{
-                    fontFamily: "'Manrope', sans-serif",
-                    fontSize: "0.82rem",
-                    color: C.creamDim,
-                    lineHeight: 1.5,
-                    fontWeight: 400,
-                    maxWidth: 280,
-                    margin: "0 auto",
-                  }}
-                >{s.label}</p>
-              </div>
-            );
-          })}
-        </div>
-
-        <div
-          className="section-foot"
-          style={{
-            margin: "3rem auto 0",
-            maxWidth: 680,
-            display: "flex",
-            alignItems: "flex-start",
-            gap: "1rem",
-            padding: "1.5rem 1.75rem",
-            borderLeft: `2px solid ${C.green}`,
-            background: "rgba(74,222,128,0.04)",
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontSize: "0.6rem",
-              color: C.green,
-              letterSpacing: "0.25em",
-              textTransform: "uppercase",
-              fontWeight: 700,
-              flexShrink: 0,
-              paddingTop: "0.15rem",
-              whiteSpace: "nowrap",
-            }}
-          >
-            For Context
-          </span>
-          <p
-            style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontSize: "0.9rem",
-              color: "rgba(232,228,220,0.88)",
-              lineHeight: 1.65,
-              fontWeight: 400,
-              margin: 0,
-            }}
-          >
-            {COPY.why.footnote.replace(/^For context:\s*/i, "")}
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* Parse "$1.17B", "2%", "500K+" into counter-animatable components */
-function parseStat(str) {
-  const prefixMatch = str.match(/^[^\d.]+/);
-  const prefix = prefixMatch ? prefixMatch[0] : "";
-  const rest = str.slice(prefix.length);
-  const numMatch = rest.match(/^([\d,.]+)/);
-  const numRaw = numMatch ? numMatch[1].replace(/,/g, "") : "0";
-  const value = parseFloat(numRaw);
-  const suffix = rest.slice(numMatch ? numMatch[1].length : 0);
-  const decimals = (numRaw.split(".")[1] || "").length;
-  return { prefix, value, suffix, decimals };
-}
-
 /* ===== Team Section ===== */
 function TeamSection() {
   return (
     <section
       className="scroll-section align-center"
-      data-enter="73" data-leave="82" data-animation="clip-reveal"
+      data-enter="65" data-leave="82" data-animation="clip-reveal"
     >
       <div className="section-inner">
         <div
@@ -836,7 +707,6 @@ export default function HomePage() {
       <div ref={scrollContainerRef} id="scroll-container">
         <MissionSection />
         <ServicesSection />
-        <StatsSection />
         <TeamSection />
         <CTASection />
       </div>
