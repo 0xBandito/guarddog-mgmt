@@ -9,7 +9,7 @@ export default function ServicesIndexPage() {
   usePageMeta({
     title: "Services — Guard Dog Management",
     description:
-      "NIL representation for high school athletes and college transfer portal entrants. Guard Dog protects the bag at the moments where most athletes leave money on the table.",
+      "NIL representation for high school and college athletes. From the first deal to the transfer portal window, Guard Dog protects the bag at every stage of your earning career.",
     path: "/services",
   });
 

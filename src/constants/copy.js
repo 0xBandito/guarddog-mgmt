@@ -21,7 +21,7 @@ export const COPY = {
     tag: "What We Do",
     headline: "The Deals That Define Careers.",
     intro:
-      "Two moments decide how much of your earnings you actually keep: the first NIL deal you sign, and the next one you negotiate. Guard Dog represents athletes at both.",
+      "Your NIL career has two chapters now: high school and college. Every contract, every negotiation, every transfer portal window — Guard Dog represents athletes through all of it.",
     items: [
       {
         title: "High School NIL Representation",
@@ -44,22 +44,22 @@ export const COPY = {
         },
       },
       {
-        title: "Transfer Portal Representation",
-        slug: "transfer-portal",
+        title: "College NIL Representation",
+        slug: "college-nil",
         num: "02",
-        body: "Your value changes the moment you enter the portal. We make sure you leave with leverage, a plan, and a package that matches what you are actually worth.",
+        body: "Six-figure deals are landing in dorm rooms with nobody reading the fine print. We negotiate, protect, and manage the full NIL life of a college athlete — from first campus deal to the transfer portal window.",
         detail: {
-          tagline: "The window is short. The decisions stick. Do not move without representation.",
+          tagline: "Every deal you sign in college sets the number on every deal after it.",
           paragraphs: [
-            "The transfer portal is where athletes gain the most leverage they will ever have in their collegiate career, and also where most of them leave money on the table. Programs move fast. Deadlines are real. Offers come layered.",
-            "Guard Dog represents athletes entering the portal. We evaluate NIL packages across competing programs, pressure-test promises, and negotiate on your behalf so the deal on paper matches the offer on the phone.",
-            "And when the deal is signed, we do not disappear. The same infrastructure that secured a fair package then manages your new tax exposure, compliance across state lines, and the rest of your financial life at the new school.",
+            "College is where NIL money gets serious, and where most athletes end up accepting the first offer they get. Guard Dog steps in as your representation so every contract you touch reflects what you are actually worth.",
+            "We negotiate with collectives and brands, pressure-test promises, and run the transfer portal window when the time comes. When your program changes, your value changes, and we make sure the new package matches it.",
+            "And once the paper is signed, the work continues. Multi-state tax exposure, long-term wealth strategy, and compliance all get handled so your focus stays on the game.",
           ],
           features: [
-            "Multi-program NIL package evaluation",
-            "Direct negotiation with collectives and brands",
-            "State-to-state tax and compliance transition",
-            "Full wealth strategy at the new school",
+            "NIL contract review and negotiation",
+            "Collective and brand deal management",
+            "Transfer portal package evaluation and negotiation",
+            "Multi-state tax and compliance across programs",
           ],
         },
       },
@@ -184,7 +184,7 @@ export const COPY = {
     location: "Atlanta, GA",
     serviceOptions: [
       "High School NIL Representation",
-      "Transfer Portal Representation",
+      "College NIL Representation",
       "Athlete Development",
       "Wealth Strategy",
       "Tax & Compliance",
