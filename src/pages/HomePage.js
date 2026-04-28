@@ -256,12 +256,12 @@ function ServicesSection() {
           className="section-heading"
           style={{
             fontFamily: "'Archivo Black', sans-serif",
-            fontSize: "clamp(2rem, 3.6vw, 3.2rem)",
+            fontSize: "clamp(1.85rem, 3.2vw, 2.85rem)",
             fontWeight: 400,
             color: C.cream,
             lineHeight: 1.05,
             letterSpacing: "-0.015em",
-            marginBottom: "1.25rem",
+            marginBottom: "0.9rem",
             textTransform: "uppercase",
             whiteSpace: "normal",
             overflowWrap: "break-word",
@@ -274,12 +274,12 @@ function ServicesSection() {
           className="section-body"
           style={{
             fontFamily: "'Manrope', sans-serif",
-            fontSize: "clamp(0.95rem, 1.05vw, 1.05rem)",
+            fontSize: "clamp(0.88rem, 0.95vw, 0.98rem)",
             color: "rgba(232,228,220,0.82)",
-            lineHeight: 1.7,
+            lineHeight: 1.55,
             fontWeight: 400,
             maxWidth: 620,
-            marginBottom: "2.5rem",
+            marginBottom: "1.25rem",
             textShadow: "0 2px 12px rgba(0,0,0,0.6)",
           }}
         >
@@ -296,9 +296,9 @@ function ServicesSection() {
                 textDecoration: "none",
                 display: "grid",
                 gridTemplateColumns: "auto 1fr auto",
-                gap: "1.5rem",
+                gap: "1.25rem",
                 alignItems: "center",
-                padding: "1.35rem 0",
+                padding: "0.85rem 0",
                 borderTop: `1px solid ${C.border}`,
                 transition: "border-color 0.3s",
               }}
@@ -321,13 +321,13 @@ function ServicesSection() {
                 className="svc-num"
                 style={{
                   fontFamily: "'Manrope', sans-serif",
-                  fontSize: "0.75rem",
+                  fontSize: "0.7rem",
                   color: C.creamMuted,
                   letterSpacing: "0.15em",
                   fontWeight: 600,
                   transition: "color 0.3s",
-                  minWidth: 28,
-                  paddingTop: "0.35rem",
+                  minWidth: 24,
+                  paddingTop: "0.2rem",
                   textShadow: "0 2px 8px rgba(0,0,0,0.5)",
                 }}
               >{s.num}</span>
@@ -335,11 +335,11 @@ function ServicesSection() {
                 <h3
                   style={{
                     fontFamily: "'Archivo Black', sans-serif",
-                    fontSize: "clamp(1.3rem, 1.75vw, 1.7rem)",
+                    fontSize: "clamp(1.05rem, 1.35vw, 1.4rem)",
                     color: C.cream,
                     fontWeight: 400,
                     letterSpacing: "0.01em",
-                    marginBottom: "0.5rem",
+                    marginBottom: "0.3rem",
                     textTransform: "uppercase",
                     textShadow: "0 2px 16px rgba(0,0,0,0.6)",
                   }}
@@ -347,9 +347,9 @@ function ServicesSection() {
                 <p
                   style={{
                     fontFamily: "'Manrope', sans-serif",
-                    fontSize: "clamp(0.95rem, 1.05vw, 1.05rem)",
+                    fontSize: "clamp(0.82rem, 0.9vw, 0.92rem)",
                     color: "rgba(232,228,220,0.82)",
-                    lineHeight: 1.65,
+                    lineHeight: 1.5,
                     fontWeight: 400,
                     textShadow: "0 2px 12px rgba(0,0,0,0.6)",
                   }}
@@ -359,9 +359,9 @@ function ServicesSection() {
                 className="svc-arrow"
                 style={{
                   color: C.creamMuted,
-                  fontSize: "1rem",
+                  fontSize: "0.95rem",
                   transition: "transform 0.3s, color 0.3s",
-                  paddingTop: "0.25rem",
+                  paddingTop: "0.2rem",
                   textShadow: "0 2px 8px rgba(0,0,0,0.5)",
                 }}
               >&rarr;</span>
@@ -405,12 +405,12 @@ function WhatWeDoSection() {
           className="section-heading"
           style={{
             fontFamily: "'Archivo Black', sans-serif",
-            fontSize: "clamp(2rem, 3.6vw, 3.2rem)",
+            fontSize: "clamp(1.85rem, 3.2vw, 2.85rem)",
             fontWeight: 400,
             color: C.cream,
             lineHeight: 1.05,
             letterSpacing: "-0.015em",
-            marginBottom: "2.5rem",
+            marginBottom: "1.5rem",
             textTransform: "uppercase",
             whiteSpace: "normal",
             overflowWrap: "break-word",
@@ -430,9 +430,9 @@ function WhatWeDoSection() {
                 textDecoration: "none",
                 display: "grid",
                 gridTemplateColumns: "auto 1fr auto",
-                gap: "1.5rem",
+                gap: "1.25rem",
                 alignItems: "center",
-                padding: "1.35rem 0",
+                padding: "0.7rem 0",
                 borderTop: `1px solid ${C.border}`,
                 transition: "border-color 0.3s",
               }}
@@ -455,13 +455,13 @@ function WhatWeDoSection() {
                 className="svc-num"
                 style={{
                   fontFamily: "'Manrope', sans-serif",
-                  fontSize: "0.75rem",
+                  fontSize: "0.7rem",
                   color: C.creamMuted,
                   letterSpacing: "0.15em",
                   fontWeight: 600,
                   transition: "color 0.3s",
-                  minWidth: 28,
-                  paddingTop: "0.35rem",
+                  minWidth: 24,
+                  paddingTop: "0.2rem",
                   textShadow: "0 2px 8px rgba(0,0,0,0.5)",
                 }}
               >{p.num}</span>
@@ -469,11 +469,11 @@ function WhatWeDoSection() {
                 <h3
                   style={{
                     fontFamily: "'Archivo Black', sans-serif",
-                    fontSize: "clamp(1.3rem, 1.75vw, 1.7rem)",
+                    fontSize: "clamp(1rem, 1.25vw, 1.3rem)",
                     color: C.cream,
                     fontWeight: 400,
                     letterSpacing: "0.01em",
-                    marginBottom: "0.5rem",
+                    marginBottom: "0.25rem",
                     textTransform: "uppercase",
                     textShadow: "0 2px 16px rgba(0,0,0,0.6)",
                   }}
@@ -481,9 +481,9 @@ function WhatWeDoSection() {
                 <p
                   style={{
                     fontFamily: "'Manrope', sans-serif",
-                    fontSize: "clamp(0.95rem, 1.05vw, 1.05rem)",
+                    fontSize: "clamp(0.78rem, 0.85vw, 0.88rem)",
                     color: "rgba(232,228,220,0.82)",
-                    lineHeight: 1.65,
+                    lineHeight: 1.45,
                     fontWeight: 400,
                     textShadow: "0 2px 12px rgba(0,0,0,0.6)",
                   }}
@@ -493,9 +493,9 @@ function WhatWeDoSection() {
                 className="svc-arrow"
                 style={{
                   color: C.creamMuted,
-                  fontSize: "1rem",
+                  fontSize: "0.95rem",
                   transition: "transform 0.3s, color 0.3s",
-                  paddingTop: "0.25rem",
+                  paddingTop: "0.2rem",
                   textShadow: "0 2px 8px rgba(0,0,0,0.5)",
                 }}
               >&rarr;</span>

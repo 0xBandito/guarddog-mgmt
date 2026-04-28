@@ -21,7 +21,7 @@ export const COPY = {
     tag: "Services",
     headline: "The Deals That Define Careers.",
     intro:
-      "Your NIL career has two chapters now: high school and college. Every contract, every negotiation, every transfer portal window. Guard Dog represents athletes through all of it.",
+      "Your career has three chapters now: high school, college, and the league. Every contract, every negotiation, every transfer portal window, and every move into the pros. Guard Dog represents athletes through all of it.",
     items: [
       {
         title: "High School NIL Representation",
@@ -60,6 +60,26 @@ export const COPY = {
             "Collective and brand deal management",
             "Transfer portal package evaluation and negotiation",
             "Multi-state tax and compliance across programs",
+          ],
+        },
+      },
+      {
+        title: "NFL Representation",
+        slug: "nfl-representation",
+        num: "03",
+        body: "When the league calls, the team that protected you in college does not disappear. Guard Dog works alongside trusted NFL agents to handle on-field contracts while we manage the off-field life that makes or breaks pros.",
+        detail: {
+          tagline: "Most pros lose it within five years. Our guys do not.",
+          paragraphs: [
+            "Going pro is the moment most athletes get separated from the people who actually had their back. New agents, new advisors, new everyone. Guard Dog refuses to let that happen. We work with a vetted network of NFL agents who handle the on-field contract, while Guard Dog continues to run everything around it.",
+            "That means your wealth strategy, tax planning, brand, and lifestyle do not start over the day you get drafted. The infrastructure we built in high school and college scales with you into the league, and the NFL agent we partner you with operates inside that system, not around it.",
+            "The result is one team, end to end. The agent fights for the contract. We fight for the rest of your life.",
+          ],
+          features: [
+            "Vetted NFL agent partnerships for on-field contracts",
+            "Continuity of wealth, tax, and brand strategy from college to pro",
+            "Endorsement and marketing deal oversight",
+            "Long-term planning for life after the league",
           ],
         },
       },
@@ -158,6 +178,26 @@ export const COPY = {
           ],
         },
       },
+      {
+        title: "Branding & Marketing",
+        slug: "branding-marketing",
+        num: "05",
+        body: "The business side of being you. We build the brand, source the deals, and run the campaigns so every endorsement raises your number for the next one.",
+        detail: {
+          tagline: "Your name is the product. We make sure it sells like one.",
+          paragraphs: [
+            "Lifestyle is what you live. Branding & Marketing is what you sell. This pillar handles the commercial side of an athlete's name, image, and likeness. Media kits, brand positioning, deal sourcing, and the campaigns that turn audience into income.",
+            "We pitch you to the right brands, negotiate placements that fit your identity, and run integrated campaigns across paid, organic, and earned channels. Every deal is built to compound, so the next sponsor pays more than the last one.",
+            "The athletes who win long term are not the ones with the most followers. They are the ones with the cleanest brand, the sharpest pitch, and the team that knows how to move it.",
+          ],
+          features: [
+            "Brand positioning and media kit development",
+            "Endorsement and sponsorship deal sourcing",
+            "Integrated marketing campaigns across paid, organic, and earned",
+            "Performance tracking and rate-card growth over time",
+          ],
+        },
+      },
     ],
   },
   about: {
@@ -185,10 +225,12 @@ export const COPY = {
     serviceOptions: [
       "High School NIL Representation",
       "College NIL Representation",
+      "NFL Representation",
       "Athlete Development",
       "Wealth Strategy",
       "Tax & Compliance",
       "Lifestyle & Experiences",
+      "Branding & Marketing",
       "All of the Above",
     ],
   },

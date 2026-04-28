@@ -310,8 +310,8 @@ footer {
      Short sections (mission, cta) stay centered. */
   .scroll-section:not(.mission-section):not(.cta-section) {
     align-items: flex-start !important;
-    padding-top: 13vh !important;
-    padding-bottom: 6vh !important;
+    padding-top: 10vh !important;
+    padding-bottom: 4vh !important;
   }
 
   .align-left,
@@ -328,34 +328,41 @@ footer {
 
   /* Section headings: tighter on mobile so they don't eat all the vertical space */
   .scroll-section .section-heading {
-    font-size: clamp(1.65rem, 7.5vw, 2.2rem) !important;
-    margin-bottom: 1.25rem !important;
+    font-size: clamp(1.45rem, 6.6vw, 2rem) !important;
+    margin-bottom: 0.9rem !important;
     line-height: 1.08 !important;
   }
   .scroll-section .section-label {
-    margin-bottom: 0.75rem !important;
+    margin-bottom: 0.6rem !important;
     font-size: 0.6rem !important;
   }
-
-  /* Services sub-rows: tighten so all 4 fit comfortably */
-  .service-subrow {
-    padding: 0.85rem 0 !important;
-    gap: 0.75rem !important;
-  }
-  .service-subrow h3 {
-    font-size: 1rem !important;
-    margin-bottom: 0.15rem !important;
-  }
-  .service-subrow p {
+  /* Tighten the Services-section intro paragraph so the 3 service rows fit
+     under it without clipping on mobile */
+  .services-section .section-body {
     font-size: 0.8rem !important;
     line-height: 1.45 !important;
+    margin-bottom: 0.9rem !important;
+  }
+
+  /* Sub-rows: tightened so 5 pillars (and 3 services) fit within 100vh */
+  .service-subrow {
+    padding: 0.55rem 0 !important;
+    gap: 0.65rem !important;
+  }
+  .service-subrow h3 {
+    font-size: 0.92rem !important;
+    margin-bottom: 0.1rem !important;
+  }
+  .service-subrow p {
+    font-size: 0.74rem !important;
+    line-height: 1.4 !important;
   }
   .service-subrow .svc-num {
-    font-size: 0.6rem !important;
-    padding-top: 0.15rem !important;
-    min-width: 18px !important;
+    font-size: 0.58rem !important;
+    padding-top: 0.1rem !important;
+    min-width: 16px !important;
   }
-  .service-subrow .svc-arrow { font-size: 0.85rem !important; }
+  .service-subrow .svc-arrow { font-size: 0.8rem !important; }
 
   /* Stats: single column — each stat gets its own row, no cut-off */
   .stats-grid .stat { text-align: left !important; }
