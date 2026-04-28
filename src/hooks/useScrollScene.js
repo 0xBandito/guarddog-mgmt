@@ -186,7 +186,7 @@ export default function useScrollScene({
 
       // Lenis smooth scroll
       lenis = new Lenis({
-        duration: isMobile ? 1.2 : 1.5,
+        duration: isMobile ? 0.9 : 1.1,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
         touchMultiplier: isMobile ? 1.6 : 1,
@@ -195,7 +195,10 @@ export default function useScrollScene({
       lenis.on("scroll", ScrollTrigger.update);
       lenisRaf = (time) => lenis.raf(time * 1000);
       gsap.ticker.add(lenisRaf);
-      gsap.ticker.lagSmoothing(0);
+      // Default smoothing: average over 500ms and only step in if a tick is
+      // slower than 33ms. Keeps frame jumps smooth across GC pauses or image
+      // decodes without making scroll feel laggy under normal load.
+      gsap.ticker.lagSmoothing(500, 33);
       window.__lenis = lenis;
 
       // Note: we intentionally do NOT force scrollTo(0) here. The inline
@@ -226,7 +229,7 @@ export default function useScrollScene({
             }
             if (index !== currentFrame && frames[index]) {
               currentFrame = index;
-              requestAnimationFrame(() => drawFrame(currentFrame));
+              drawFrame(currentFrame);
             }
           },
         })
