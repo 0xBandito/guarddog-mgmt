@@ -34,6 +34,7 @@ export default function Nav() {
   };
 
   return (
+    <>
     <nav style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
       background: scrolled ? "rgba(12,11,9,0.95)" : "transparent",
@@ -115,31 +116,36 @@ export default function Nav() {
         <div style={{ width: 24, height: 1.5, background: C.cream }} />
         <div style={{ width: 16, height: 1.5, background: C.cream }} />
       </button>
-
-      {open && (
-        <div style={{
-          position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
-          background: C.bg, zIndex: 200,
-          display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "2.5rem",
-        }}>
-          <button onClick={() => setOpen(false)} style={{ position: "absolute", top: "1.5rem", right: "2rem", background: "none", border: "none", color: C.cream, fontSize: "1.5rem", cursor: "pointer", fontWeight: 300, padding: "0.75rem" }}>
-            {"\u2715"}
-          </button>
-          {COPY.nav.links.map((link) => (
-            <Link key={link.label}
-              to={link.to}
-              onClick={() => setOpen(false)}
-              style={{
-                background: "none", border: "none", color: C.cream,
-                fontSize: "1.5rem", fontFamily: "'Archivo Black', sans-serif",
-                letterSpacing: "0.05em", cursor: "pointer",
-                textDecoration: "none",
-                padding: "0.75rem 1.5rem",
-              }}
-            >{link.label}</Link>
-          ))}
-        </div>
-      )}
     </nav>
+
+    {/* Mobile menu overlay is rendered outside <nav> on purpose. The nav uses
+        backdrop-filter when scrolled, which creates a containing block for
+        position:fixed descendants and would clip the overlay to the nav's
+        height. Sibling placement keeps the overlay anchored to the viewport. */}
+    {open && (
+      <div style={{
+        position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
+        background: C.bg, zIndex: 200,
+        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "2.5rem",
+      }}>
+        <button onClick={() => setOpen(false)} style={{ position: "absolute", top: "1.5rem", right: "2rem", background: "none", border: "none", color: C.cream, fontSize: "1.5rem", cursor: "pointer", fontWeight: 300, padding: "0.75rem" }}>
+          {"\u2715"}
+        </button>
+        {COPY.nav.links.map((link) => (
+          <Link key={link.label}
+            to={link.to}
+            onClick={() => setOpen(false)}
+            style={{
+              background: "none", border: "none", color: C.cream,
+              fontSize: "1.5rem", fontFamily: "'Archivo Black', sans-serif",
+              letterSpacing: "0.05em", cursor: "pointer",
+              textDecoration: "none",
+              padding: "0.75rem 1.5rem",
+            }}
+          >{link.label}</Link>
+        ))}
+      </div>
+    )}
+    </>
   );
 }
