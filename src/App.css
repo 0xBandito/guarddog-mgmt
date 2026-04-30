@@ -205,6 +205,16 @@ footer {
   .cta-section .section-inner::after { display: none; }
 }
 
+/* Founder snapshot scrim — full dark backdrop so the photo + text both read
+   cleanly over the canvas video. Photo has its own opaque background. */
+.founder-snapshot-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgba(12, 11, 9, 0.78);
+  z-index: 1;
+}
+
 /* Services section scrim — dark on the text side, fades out over the dog/money canvas */
 .services-scrim {
   position: absolute;
@@ -291,6 +301,10 @@ footer {
   .nav-desktop { display: none !important; }
   .nav-mobile-btn { display: flex !important; }
   .why-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+  .founder-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+  .founder-grid > div:first-child { max-width: 320px; margin: 0 auto; }
+  .founder-snapshot-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+  .founder-snapshot-grid > div:first-child { max-width: 280px; margin: 0 auto; }
   .team-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem !important; }
   .stats-grid { grid-template-columns: 1fr !important; gap: 1.25rem !important; }
   .services-index-grid { grid-template-columns: 1fr !important; }

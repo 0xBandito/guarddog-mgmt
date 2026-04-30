@@ -4,6 +4,7 @@ import { C } from "../constants/colors";
 import { COPY } from "../constants/copy";
 import useScrollScene from "../hooks/useScrollScene";
 import usePageMeta from "../hooks/usePageMeta";
+import qHeadshot from "../assets/QUENTIN_JONES_HEADSHOT.webp";
 
 /* ===== Loader ===== */
 function Loader({ progress, done }) {
@@ -668,120 +669,144 @@ function parseStat(str) {
   return { prefix, value, suffix, decimals };
 }
 
-/* ===== Team Section ===== */
-function TeamSection() {
+/* ===== Founder Snapshot (replaces team grid until full team is ready) =====
+   Photo of Q on the left, condensed founder intro on the right with a link
+   that hands off to the full About page. */
+function FounderSnapshotSection() {
+  const f = COPY.about.founder;
   return (
     <section
-      className="scroll-section align-center"
+      className="scroll-section align-left founder-snapshot-section"
       data-enter="76" data-leave="85" data-animation="clip-reveal"
     >
-      <div className="section-inner">
-        <div
-          className="section-label"
-          style={{
-            fontFamily: "'Manrope', sans-serif",
-            fontSize: "0.68rem",
-            letterSpacing: "0.35em",
-            textTransform: "uppercase",
-            color: C.greenAccent,
-            fontWeight: 600,
-            marginBottom: "1.2rem",
-          }}
-        >{COPY.about.tag}</div>
-        <h2
-          className="section-heading"
-          style={{
-            fontFamily: "'Archivo Black', sans-serif",
-            fontSize: "clamp(2rem, 4vw, 3.25rem)",
-            fontWeight: 400,
-            color: C.cream,
-            lineHeight: 1.05,
-            letterSpacing: "-0.01em",
-            marginBottom: "3rem",
-            textTransform: "uppercase",
-          }}
-        >{COPY.about.headline}</h2>
-
-        <div
-          className="team-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "1.25rem",
-            maxWidth: 1100,
-            margin: "0 auto",
-          }}
-        >
-          {COPY.about.team.map((t, i) => (
-            <div
-              key={t.name}
-              className="team-member hover-lift"
+      {/* Dark scrim so text reads over the canvas video */}
+      <div className="founder-snapshot-scrim" aria-hidden="true" />
+      <div className="section-inner" style={{ position: "relative", zIndex: 2 }}>
+        <div className="founder-snapshot-grid" style={{
+          display: "grid",
+          gridTemplateColumns: "minmax(220px, 280px) 1fr",
+          gap: "3.5rem",
+          alignItems: "center",
+          maxWidth: 1100,
+          margin: "0 auto",
+        }}>
+          {/* Photo */}
+          <div style={{
+            position: "relative",
+            aspectRatio: "3 / 4",
+            border: `1.5px solid ${C.green}`,
+            boxShadow: `0 0 0 1px rgba(74,222,128,0.08), 0 0 28px rgba(74,222,128,0.16)`,
+            background: C.bgCard,
+            overflow: "hidden",
+          }}>
+            <img
+              src={qHeadshot}
+              alt="Quentin Jones, Founder of Guard Dog Management"
               style={{
-                padding: "2rem 1.5rem 1.75rem",
-                background: "rgba(12,11,9,0.55)",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-                border: `1px solid ${C.border}`,
-                textAlign: "left",
-                transition: "border-color 0.3s, transform 0.3s",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center top",
+                display: "block",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = C.borderHover; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = C.border; }}
-            >
-              <div style={{
-                fontFamily: "'Manrope', sans-serif",
-                fontSize: "0.55rem",
-                color: C.creamMuted,
-                letterSpacing: "0.15em",
-                fontWeight: 600,
-                marginBottom: "1.25rem",
-              }}>0{i + 1}</div>
-              <div style={{
-                width: 62, height: 62, borderRadius: "50%",
-                background: `linear-gradient(135deg, ${C.bgElevated} 0%, ${C.bgCard} 100%)`,
-                border: `1.5px solid ${C.green}`,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                marginBottom: "1.5rem",
-                position: "relative",
-                boxShadow: `0 0 0 1px rgba(74,222,128,0.08), 0 0 24px rgba(74,222,128,0.12)`,
-              }}>
-                <span style={{
-                  fontFamily: "'Archivo Black', sans-serif",
-                  fontSize: "1.35rem",
-                  color: C.green,
-                  letterSpacing: "0.02em",
-                  lineHeight: 1,
-                  textTransform: "uppercase",
-                }}>{t.name.charAt(0)}</span>
-                <span style={{
-                  position: "absolute",
-                  bottom: -4, right: -4,
-                  width: 14, height: 14,
-                  borderRadius: "50%",
-                  background: C.green,
-                  border: `2px solid ${C.bg}`,
-                  boxShadow: `0 0 8px ${C.green}88`,
-                }} />
-              </div>
-              <p style={{
-                fontFamily: "'Archivo Black', sans-serif",
-                fontSize: "1.05rem",
-                color: C.cream,
-                letterSpacing: "0.02em",
-                marginBottom: "0.4rem",
-                textTransform: "uppercase",
-              }}>{t.name}</p>
-              <p style={{
+            />
+            <span aria-hidden="true" style={{
+              position: "absolute",
+              inset: 0,
+              border: `1px solid rgba(74,222,128,0.12)`,
+              pointerEvents: "none",
+            }} />
+          </div>
+
+          {/* Copy */}
+          <div>
+            <div
+              className="section-label"
+              style={{
                 fontFamily: "'Manrope', sans-serif",
                 fontSize: "0.68rem",
-                color: "rgba(232,228,220,0.7)",
-                letterSpacing: "0.14em",
+                letterSpacing: "0.35em",
                 textTransform: "uppercase",
-                fontWeight: 500,
-                lineHeight: 1.55,
-              }}>{t.role}</p>
+                color: C.greenAccent,
+                fontWeight: 600,
+                marginBottom: "1.2rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.75rem",
+                textShadow: "0 2px 8px rgba(0,0,0,0.7)",
+              }}
+            >
+              <span style={{ width: 24, height: 1, background: C.greenAccent }} />
+              {COPY.about.tag}
             </div>
-          ))}
+            <h2
+              className="section-heading"
+              style={{
+                fontFamily: "'Archivo Black', sans-serif",
+                fontSize: "clamp(2rem, 3.6vw, 3.2rem)",
+                fontWeight: 400,
+                color: C.cream,
+                lineHeight: 1.05,
+                letterSpacing: "-0.015em",
+                marginBottom: "1.5rem",
+                textTransform: "uppercase",
+                textShadow: "0 2px 16px rgba(0,0,0,0.85), 0 0 32px rgba(0,0,0,0.5)",
+              }}
+            >{COPY.about.headline}</h2>
+            <p
+              style={{
+                fontFamily: "'Archivo Black', sans-serif",
+                fontSize: "clamp(1rem, 1.2vw, 1.2rem)",
+                color: C.cream,
+                letterSpacing: "0.01em",
+                marginBottom: "0.35rem",
+                textTransform: "uppercase",
+                textShadow: "0 2px 12px rgba(0,0,0,0.85)",
+              }}
+            >{f.name}</p>
+            <p style={{
+              fontFamily: "'Manrope', sans-serif",
+              fontSize: "0.68rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "rgba(232,228,220,0.85)",
+              fontWeight: 600,
+              marginBottom: "1.5rem",
+              textShadow: "0 2px 8px rgba(0,0,0,0.85)",
+            }}>{f.role}</p>
+            <p
+              className="section-body"
+              style={{
+                fontFamily: "'Manrope', sans-serif",
+                fontSize: "clamp(0.95rem, 1.05vw, 1.05rem)",
+                color: "rgba(245,242,236,0.95)",
+                lineHeight: 1.7,
+                fontWeight: 400,
+                marginBottom: "2rem",
+                textShadow: "0 2px 14px rgba(0,0,0,0.9), 0 0 24px rgba(0,0,0,0.6)",
+                maxWidth: 560,
+              }}
+            >{f.bio[0]}</p>
+
+            <Link
+              to="/about"
+              className="section-note"
+              style={{
+                fontFamily: "'Manrope', sans-serif",
+                fontSize: "0.7rem",
+                color: C.green,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                fontWeight: 600,
+                textDecoration: "none",
+                borderBottom: `1px solid ${C.greenBorder}`,
+                paddingBottom: "0.3rem",
+                textShadow: "0 2px 8px rgba(0,0,0,0.85)",
+              }}
+            >
+              Meet the Founder &rarr;
+            </Link>
+          </div>
         </div>
       </div>
     </section>
@@ -981,7 +1006,7 @@ export default function HomePage() {
         <ServicesSection />
         <WhatWeDoSection />
         <WhyGuardDogSection />
-        <TeamSection />
+        <FounderSnapshotSection />
         <CTASection />
       </div>
     </>

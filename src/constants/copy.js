@@ -204,6 +204,30 @@ export const COPY = {
     tag: "The Team",
     headline: "People Who Get It.",
     body: "Guard Dog was built by people who understand the game from every angle. From athlete development and financial strategy to tax compliance and lifestyle management, our team brings the experience and focus that college athletes need to protect what they earn.",
+    founder: {
+      name: 'Quentin "Q" Jones',
+      role: "Founder, Director of Athlete Development",
+      bio: [
+        "Quentin Jones built Guard Dog Management around one mission. Athletes shouldn't just make money. They should keep it, grow it, and use it the right way. He's assembled a team of specialists across wealth, tax, and lifestyle to make sure every dollar earned gets protected.",
+        "With a background as a high-level defensive back and coaching experience at the Power 4 and NFL level, Q understands exactly what athletes face: recruitment, NIL deals, preparing for the next level.",
+        "He has worked inside elite football environments, including Georgia Tech and the NFL through the Bill Walsh Fellowship.",
+      ],
+      quote: "Most athletes don't lose because they can't make money. They lose because they don't know how to manage it.",
+    },
+    differentiators: {
+      tag: "The Difference",
+      headline: "Q Doesn't Just Advise Athletes. He Develops Them.",
+      items: [
+        { num: "01", title: "On the Field", body: "Training mindset, development, preparation." },
+        { num: "02", title: "In Decision-Making", body: "Helping athletes and families understand opportunities." },
+        { num: "03", title: "Beyond the Game", body: "Building structure around money, brand, and life." },
+      ],
+    },
+    closing: {
+      headline: "This Isn't Just NIL. This Is Protection.",
+      body: "Most athletes are focused on getting paid. We're focused on what happens after. Guard Dog Management is built for athletes and families who want to move smart and build something that lasts.",
+      button: "Let's Build",
+    },
     team: [
       { name: "Q", role: "Founder / Director of Athlete Development" },
       { name: "Aeshia", role: "Director of Wealth Strategy" },
