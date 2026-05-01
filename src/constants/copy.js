@@ -244,7 +244,7 @@ export const COPY = {
     tag: "Get In Touch",
     headline: "Let's Build.",
     intro: "Whether you just signed your first NIL deal or you are looking for long-term wealth strategy, we are here. No pressure, no pitch. Just a conversation about protecting what is yours.",
-    email: "qjones0205@gmail.com",
+    email: "info@guarddogmgmt.com",
     location: "Atlanta, GA",
     serviceOptions: [
       "High School NIL Representation",
