@@ -3,7 +3,7 @@ import { C } from "../constants/colors";
 import { COPY } from "../constants/copy";
 import useInView from "../hooks/useInView";
 import usePageMeta from "../hooks/usePageMeta";
-import qHeadshot from "../assets/QUENTIN_JONES_HEADSHOT.webp";
+import qHeadshot from "../assets/q_headhsot_final.png";
 
 export default function AboutPage() {
   usePageMeta({

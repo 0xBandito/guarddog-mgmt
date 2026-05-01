@@ -4,7 +4,7 @@ import { C } from "../constants/colors";
 import { COPY } from "../constants/copy";
 import useScrollScene from "../hooks/useScrollScene";
 import usePageMeta from "../hooks/usePageMeta";
-import qHeadshot from "../assets/QUENTIN_JONES_HEADSHOT.webp";
+import qHeadshot from "../assets/q_headhsot_final.png";
 
 /* ===== Loader ===== */
 function Loader({ progress, done }) {
