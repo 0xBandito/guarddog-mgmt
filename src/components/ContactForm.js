@@ -92,7 +92,7 @@ function validate(values) {
   if (!values.email.trim()) errors.email = "Required";
   else if (!EMAIL_RE.test(values.email.trim())) errors.email = "Enter a valid email address";
   if (values.phone.trim() && !isValidPhone(values.phone)) {
-    errors.phone = "Enter a valid 10-digit phone number";
+    errors.phone = "Enter a valid phone number";
   }
   if (!values.service) errors.service = "Please choose one";
   if (!values.message.trim()) errors.message = "Required";

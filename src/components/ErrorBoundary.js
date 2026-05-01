@@ -102,8 +102,8 @@ export default class ErrorBoundary extends React.Component {
             marginBottom: "2.5rem",
           }}
         >
-          Something on our end didn&rsquo;t load the way it should. Try reloading the page
-          &mdash; and if it keeps happening, email us at{" "}
+          Something on our end didn&rsquo;t load the way it should. Try reloading the page.
+          If it keeps happening, email us at{" "}
           <a
             href={`mailto:${COPY.contact.email}`}
             style={{ color: C.green, textDecoration: "underline" }}
